@@ -1,0 +1,94 @@
+.not-found {
+  --btn-wdh: max-content;
+  --container-align-items: center;
+  --container-justify-content: center;
+
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+
+  padding-bottom: rem(44);
+
+  min-height: calc(100vh - (var(--header-height) + #{rem(460.8)}));
+
+  text-align: center;
+
+  opacity: 0;
+
+  animation: smooth-opacity 1.2s 1 both alternate linear;
+  will-change: opacity;
+
+  &__figure {
+    padding-top: $contentGutterX4;
+
+    margin: 0 auto rem(38);
+
+    max-width: rem(444);
+
+    overflow: hidden;
+    cursor: crosshair;
+
+    svg {
+      width: 100%;
+      overflow: initial;
+    }
+
+    path:not(.__path-numb-1):not(.__path-numb-2):not(.__path-numb-3) {
+      animation: smooth-opacity 0.5s both ease-in;
+    }
+  }
+
+  &__path {
+    &-numb-1 {
+      --slide-is-translate-from: #{0, rem(200)};
+
+      animation: slide-is 2.3s both cubic-bezier(1, -0.39, 0, 1.36);
+    }
+
+    &-numb-2 {
+      --slide-is-translate-from: #{0, rem(-250)};
+
+      animation: slide-is 1.9s both cubic-bezier(1, -0.39, 0, 1.36);
+    }
+
+    &-numb-3 {
+      --slide-is-translate-from: #{0, rem(250)};
+
+      animation: slide-is 1.6s both cubic-bezier(1, -0.39, 0, 1.36);
+    }
+  }
+
+  &__text {
+    margin: $contentGutter auto $contentGutterX2;
+
+    color: $dark;
+    opacity: .8;
+  }
+
+  @include max-wide(laptop) {
+
+    padding-bottom: $contentGutterX3;
+
+    &__figure {
+      padding-top: ($contentGutterX3 * 1.2);
+    }
+  }
+
+  @include max-wide(phonesLg) {
+    &__figure {
+      margin: 0 auto rem(33);
+      padding-top: $contentGutterX3;
+
+      max-width: rem(260);
+      max-height: initial;
+    }
+  }
+
+  @include min-wide(notebookLg) {
+    &__figure {
+      max-width: rem(480);
+      max-height: initial;
+    }
+  }
+}

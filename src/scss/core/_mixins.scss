@@ -1,0 +1,495 @@
+@mixin clearfix {
+  &::after {
+    content: '';
+    display: table;
+    clear: both;
+  }
+
+  &::before {
+    content: '';
+    display: table;
+  }
+}
+
+@mixin vertical-align {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+@mixin text-dot {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+@mixin text-dot-vertical($count) {
+  overflow: hidden;
+
+  display: -webkit-box;
+  line-clamp: $count;
+  -webkit-line-clamp: $count;
+  -webkit-box-orient: vertical;
+}
+
+// Universal breakpoints mixins
+@mixin min-wide($size) {
+  @if (map-has-key($wideScreens, $size)) {
+    @media (min-width: map-get($wideScreens, $size)) {
+      @content;
+    }
+  } @else {
+    @warn "$size doesn't exist in $wideScreens.";
+  }
+}
+
+@mixin max-wide($size) {
+  @if (map-has-key($wideScreens, $size)) {
+    @media (max-width: map-get($wideScreens, $size) - 1) {
+      @content;
+    }
+  } @else {
+    @warn "$size doesn't exist in $wideScreens.";
+  }
+}
+
+//z-index
+@mixin z-index($key) {
+  z-index: z-index($key);
+}
+
+// Pseudo border shadow
+@mixin keyframes($name) {
+  @-webkit-keyframes #{$name} {
+    @content;
+  }
+  @-moz-keyframes #{$name} {
+    @content;
+  }
+  @-ms-keyframes #{$name} {
+    @content;
+  }
+  @keyframes #{$name} {
+    @content;
+  }
+}
+
+// Remaining width block
+@mixin remaining($selectorName, $orientation, $size, $indent) {
+  &#{$selectorName} {
+    #{$orientation}: calc(#{$size} - #{$indent}) !important;
+  }
+}
+
+// Unification mixin for helpers width
+@mixin unify-sizer-modifier($selectorName, $property, $size) {
+  &--#{$selectorName} {
+    #{$property}: $size !important;
+  }
+}
+
+// Pseudo border shadow
+@mixin artificial-thickness($thick, $color) {
+  $min-think: -$thick;
+  text-shadow: $min-think 0 $color, 0 $thick $color, $thick 0 $color, 0 $min-think $color;
+}
+
+@function ttomshadowBold($thick, $color) {
+  $min-think: -$thick;
+  @return $min-think 0 $color, 0 $thick $color, $thick 0 $color, 0 $min-think $color;
+}
+
+// Insert icon in pseudo element from icon-fonts
+@mixin pseudo-icon($icon-name, $size) {
+  content: unicode($icon-name);
+  font: {
+    @if type-of($size) == 'number' and unitless($size) {
+      size: rem($size);
+    } @else {
+      size: $size;
+    }
+    family: $icon-font-family;
+  }
+  line-height: 1;
+}
+
+@mixin pseudo-icon-after($sizeIcon, $alignCenterIcon) {
+  @if $alignCenterIcon {
+    position: relative;
+  }
+
+  &:not(:after):after {
+    content: none !important;
+  }
+
+  &:after {
+    @if $alignCenterIcon {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+
+      margin: 0 !important;
+
+      transform: translate(-50%, -50%);
+    }
+
+    @if $sizeIcon {
+      font-size: $sizeIcon;
+    }
+  }
+}
+
+@mixin no-list {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+@mixin optional-at-root($sel) {
+  @at-root #{if(not &, $sel, selector-append(&, $sel))} {
+    @content;
+  }
+}
+
+@mixin placeholder {
+  @include optional-at-root('::-webkit-input-placeholder') {
+    @content;
+  }
+
+  @include optional-at-root(':-moz-placeholder') {
+    @content;
+  }
+
+  @include optional-at-root('::-moz-placeholder') {
+    @content;
+  }
+
+  @include optional-at-root(':-ms-input-placeholder') {
+    @content;
+  }
+}
+
+// Scrolls fix
+@mixin scroll-disappear {
+  -ms-overflow-style: none;
+  overflow: -moz-scrollbars-none;
+
+  scrollbar-width: none;
+  scrollbar-color: transparetn;
+
+  &::-webkit-scrollbar,
+  &::-webkit-scrollbar-thumb,
+  &::-webkit-scrollbar-track {
+    -webkit-appearance: none;
+    display: none;
+
+    width: 0;
+    height: 0;
+  }
+}
+
+@mixin scroll-behavior {
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+}
+
+@mixin scroll-style($size, $foreground-color, $background-color: mix($foreground-color, white, 50%)) {
+  // For Google Chrome
+  ::-webkit-scrollbar {
+    width: $size;
+    height: $size;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: $foreground-color;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: $background-color;
+  }
+
+  // For Internet Explorer
+  body {
+    scrollbar-face-color: $foreground-color;
+    scrollbar-track-color: $background-color;
+  }
+}
+
+@mixin scroll-offset($size) {
+  padding-right: $size;
+  margin-right: -$size;
+}
+
+@mixin change-auto-fill {
+  //@include optional-at-root(':-webkit-autofill') {
+  //  @content;
+  //}
+  //@include optional-at-root(':-webkit-autofill:hover') {
+  //  @content;
+  //}
+  //@include optional-at-root(':-webkit-autofill:focus') {
+  //  @content;
+  //}
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover,
+  &:-webkit-autofill:focus {
+    @content;
+  }
+}
+
+@mixin gradientAnimation($start, $end, $transTime, $z-index) {
+  position: relative;
+  z-index: $z-index;
+
+  background-size: 100%;
+  background-image: linear-gradient($start, $end);
+
+  &:before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -$z-index;
+
+    display: block;
+
+    height: 100%;
+    width: 100%;
+
+    content: '';
+
+    background-image: linear-gradient($end, $start);
+    opacity: 0;
+    transition: opacity $transTime;
+  }
+  &:hover {
+    &:before {
+      opacity: 1;
+    }
+  }
+}
+
+@mixin only-touch {
+  @media (pointer: coarse) {
+    @content;
+  }
+}
+
+@mixin only-mouse {
+  @media (pointer: fine) {
+    @content;
+  }
+}
+
+@mixin phones-fit {
+  @supports (padding: max(0px)) {
+    ///* iOS 11 */
+    //padding-left: constant(safe-area-inset-left);
+    //padding-right: constant(safe-area-inset-right);
+
+    /* iOS 11.2+ */
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+  }
+}
+
+@mixin phones-fit-max-evn($max) {
+  @supports (padding: max(0px)) {
+    padding-left: max(#{$max}, env(safe-area-inset-left));
+    padding-right: max(#{$max}, env(safe-area-inset-right));
+  }
+}
+
+/* Microsoft Internet Explorer */
+@mixin only-ie {
+  @media all and (-ms-high-contrast: none) {
+    @content;
+  }
+}
+
+/* Microsoft Edge Browser 12-18 (All versions before Chromium) */
+@mixin only-edge {
+  @supports (-ms-ime-align: auto) {
+    @content;
+  }
+}
+
+/* Microsoft Edge Browser 12-18 (All versions before Chromium) */
+@mixin only-firefox {
+  @supports (-moz-appearance: none) {
+    @content;
+  }
+  //
+  //@-moz-document url-prefix() {
+  //  @content;
+  //}
+}
+
+@mixin ripple-effect($effect-first-color, $effect-second-color, $delay, $function) {
+  background-position: center;
+  transition: background $delay $function;
+  -webkit-transition: background $delay $function;
+
+  &:hover {
+    background: var(--ripple-effect-first-color, $effect-first-color) radial-gradient(circle, transparent 1%, var(--ripple-effect-second-color, $effect-second-color) 1%) center/15000%;
+  }
+
+  &:active {
+    background-color: var(--ripple-effect-first-color, $effect-first-color);
+    background-size: 100%;
+    transition: background 0s;
+    -webkit-transition: background 0s;
+  }
+}
+
+@mixin ripple-effect-not-vars($effect-first-color, $effect-second-color, $delay, $function) {
+  background-position: center;
+  transition: background $delay $function;
+  -webkit-transition: background $delay $function;
+
+  &:hover {
+    background: $effect-first-color radial-gradient(circle, transparent 1%, $effect-second-color 1%) center/15000%;
+  }
+
+  &:active {
+    background-color: $effect-first-color;
+    background-size: 100%;
+    transition: background 0s;
+  }
+}
+
+// Fluid typography
+//@mixin fluid-type($min-vw, $max-vw, $min-font-size, $max-font-size) {
+//  $u1: unit($min-vw);
+//  $u2: unit($max-vw);
+//  $u3: unit($min-font-size);
+//  $u4: unit($max-font-size);
+//
+//  @if $u1 == $u2 and $u1 == $u3 and $u1 == $u4 {
+//    & {
+//      font-size: $min-font-size;
+//
+//      @media screen and (min-width: $min-vw) {
+//        font-size: calc(#{$min-font-size} + #{strip-unit($max-font-size - $min-font-size)} * ((100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)}));
+//      }
+//
+//      @media screen and (min-width: $max-vw) {
+//        font-size: $max-font-size;
+//      }
+//    }
+//  }
+//}
+
+
+@mixin insert-icons {
+  [class*='#{$icon-font-prefix}'] {
+    @content;
+  }
+}
+
+@mixin content-scale($map) {
+  @each $var in $map {
+    $direction: map-get($var, 'direction');
+    $wide: map-get($var, 'wide');
+    $scale: map-get($var, 'scale');
+
+    @media ($direction: $wide) {
+      font-size: $scale;
+    }
+  }
+}
+
+$enable-important-utilities: true;
+
+@mixin generate-gm($utility, $infix) {
+  $values: map-get($utility, values);
+
+  @if type-of($values) == 'string' or type-of(nth($values, 1)) != 'list' {
+    $values: zip($values, $values);
+  }
+
+  @each $key, $value in $values {
+    $properties: map-get($utility, property);
+
+    @if type-of($properties) == 'string' {
+      $properties: append((), $properties);
+    }
+
+    $property-class: if(map-has-key($utility, class), map-get($utility, class), nth($properties, 1));
+    $property-class: if($property-class == null, '', $property-class);
+
+    $state: if(map-has-key($utility, state), map-get($utility, state), ());
+
+    $infix: if($property-class == '' and str-slice($infix, 1, 1) == '-', str-slice($infix, 2), $infix);
+
+    $property-class-modifier: if($key, if($property-class == '' and $infix == '', '', '-') + $key, '');
+
+    @if $value != null {
+      .#{$property-class + $infix + $property-class-modifier} {
+        @each $property in $properties {
+          #{$property}: $value if($enable-important-utilities, !important, null);
+        }
+      }
+
+      @each $pseudo in $state {
+        .#{$property-class + $infix + $property-class-modifier}-#{$pseudo}:#{$pseudo} {
+          @each $property in $properties {
+            #{$property}: $value if($enable-important-utilities, !important, null);
+          }
+        }
+      }
+    }
+  }
+}
+
+//$global-modificators-map: () !default;
+//$global-modificators-map: map-merge(
+//    (
+//      'filter': (
+//        property: 'blur',
+//        class: 'gm-blur',
+//        values: (
+//          '': 5px,
+//          'x2': 10px,
+//          'x3': 10px
+//        )
+//      )
+//    ),
+//    $global-modificators-map
+//);
+
+//@each $key, $utility in $global-modificators-map {
+//  @include generate-gm($utility, '');
+//  //@if type-of($utility) == "map" and map-get($utility, rfs) and (map-get($utility, responsive) or $infix == "") {
+//  //
+//  //}
+//}
+//@mixin themes-prefix(){
+//
+//}
+
+@mixin use-theme-name($name) {
+  &[theme*="#{$name}"] {
+    @content;
+  }
+}
+
+@mixin set-prefix($prefix, $prop , $val ) {
+  --#{$prefix}-#{$prop}: #{$val};
+}
+
+@mixin generate-themes($map) {
+  // primary colors
+  @each $theme-name, $theme-values in $map {
+    @if $theme-name == 'default' {
+      @each $color, $value in $theme-values {
+        @include set-prefix('cl', $color, $value)
+      }
+    } @else {
+      @include use-theme-name($theme-name) {
+        @each $color, $value in $theme-values {
+          @include set-prefix('cl', $color, $value)
+        }
+      }
+    }
+  }
+}

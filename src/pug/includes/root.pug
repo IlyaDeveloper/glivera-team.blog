@@ -1,0 +1,31 @@
+-
+  var path = '../../'
+  var language = 'en'
+
+include ../includes/ui/_button
+
+doctype html
+block core
+  include ../includes/vars
+
+  if language === 'en'
+    include ../includes/localization/eng
+
+html(lang=lang loading="true" translate="no")
+  head
+    include ../includes/head
+
+  body
+    block header
+      include ../includes/components/header
+
+    main.layout
+      block content
+
+    include ../includes/components/consent
+
+    block footer
+      include ../includes/components/footer
+
+    block scripts
+      include ../includes/scripts

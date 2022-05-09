@@ -1,0 +1,55 @@
+{
+  "name": "Glivera Team",
+  "description": "site : glivera-team.justtwic.art",
+  "version": "1.0.0",
+  "keywords": [],
+  "author": "Pashchuk Ilya",
+  "license": "ISC",
+  "source": "",
+  "targets": {
+    "default": {
+      "distDir": "./dist"
+    }
+  },
+  "scripts": {
+    "clean-dist": "rm -rf dist && mkdir dist",
+    "copy-img": "cp -vR src/assets/images ./dist",
+    "copy-data": "cp -r src/data.json dist",
+    "copy-assets": "cp -r src/assets/* dist",
+    "copy-poster": "cp -r src/assets/images/poster.jpg dist",
+    "copy-files": "npm run copy-img & npm run copy-assets & npm run copy-data",
+    "copy-host-files": "cp -r src/assets/host/* ./dist && cp -r src/assets/host/.htaccess ./dist",
+    "init": "npm run clean-dist && npm run copy-files",
+    "start": "npm run clean-dist && npm run copy-host-files && parcel src/pug/pages/ru/index.pug src/pug/pages/*.pug src/pug/pages/404.pug --open",
+    "build": "npm run clean-dist && npm run copy-host-files && npm run copy-poster && parcel build src/pug/pages/ru/index.pug src/pug/pages/*.pug src/pug/pages/404.pug",
+    "deploy": "rsync -avz --delete -e 'ssh -p 21098' ./dist/ newhopes@usshared08.twinservers.net:~/public_html/"
+  },
+  "devDependencies": {
+    "@parcel/resolver-glob": "^2.1.1",
+    "@parcel/transformer-image": "^2.1.1",
+    "@parcel/transformer-jsonld": "^2.2.1",
+    "@parcel/transformer-pug": "^2.2.1",
+    "@parcel/transformer-sass": "^2.1.1",
+    "autoprefixer": "^10.4.2",
+    "cross-env": "^7.0.3",
+    "parcel": "latest",
+    "parcel-plugin-static-files-copy": "^2.6.0",
+    "postcss": "^8.4.5",
+    "posthtml-img-autosize": "^0.1.6",
+    "posthtml-include": "^1.7.2",
+    "posthtml-modules": "^0.8.0",
+    "rsync": "^0.6.1",
+    "sass": "^1.46.0"
+  },
+  "dependencies": {
+    "cssnano": "^5.0.15",
+    "parcel-plugin-metaimage": "^1.2.4",
+    "parcel-resolver-ignore": "^2.0.0",
+    "scss": "^0.2.4"
+  },
+  "resolvers": {},
+  "parcelIgnore": [
+    "ru.html",
+    "poster.jpg"
+  ]
+}

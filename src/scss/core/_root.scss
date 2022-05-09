@@ -1,0 +1,14 @@
+:root {
+  //* root sizes
+  --container-limit: #{$containerLimit};
+  --container-gutter: #{$contentGutter};
+
+  --header-height: #{rem(90)};
+
+  @include generate-themes($themes-map);
+
+  @include max-wide(phonesLg){
+    --container-gutter: #{$contentGutterX2};
+  }
+}
+

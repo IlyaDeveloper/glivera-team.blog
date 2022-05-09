@@ -1,0 +1,87 @@
+.button {
+  @extend %glob-animation-to-up;
+
+  position: relative;
+  z-index: 1;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  font-weight: bold;
+  font-size: rem(16);
+  text-transform: uppercase;
+
+  border-radius: rem(50);
+
+  transition: .5s linear;
+  transition-property: background-color, border-color, color, transform;
+
+  &:not(.--line) {
+    position: relative;
+
+    min-height: rem(56);
+
+    margin: 0 0 rem(6) rem(9);
+    padding: rem(14) rem(35);
+
+    color: var(--button-color, $light);
+
+    background: var(--button-background, $primary);
+
+    &:before {
+      position: absolute;
+      top: 0;
+      right: var(--button-offset-right, 0);
+      bottom: rem(-6);
+      left: var(--button-offset-left, rem(-9));;
+      z-index: -1;
+
+      content: '';
+
+      border-radius: inherit;
+      border: rem(3) solid var(--button-background, $primary);
+      background: unset;
+
+      transition: .5s linear;
+      transition-property: right, left, border-color;
+    }
+  }
+
+  &.--line {
+    min-height: rem(48);
+
+    padding: rem(14) rem(40);
+
+    color: var(--button-color, currentColor);
+
+    border: rem(3) solid currentColor;
+
+    background: var(--button-background, transparent);
+  }
+
+  &.--light {
+    --button-background: #{$light} !important;
+
+    color: $primary;;
+  }
+
+  @include only-mouse {
+    &:hover {
+      --button-offset-right: #{rem(-9)};
+      --button-offset-left: 0;
+      --button-background: #{$primary-dark}
+    }
+
+    &:active {
+      transform: translate(0, rem(8));
+    }
+
+    &.--line {
+      &:hover {
+        --button-background: var(--button-hover-background, #{transparent});
+        --button-color: var(--button-hover-color, #{$primary});
+      }
+    }
+  }
+}

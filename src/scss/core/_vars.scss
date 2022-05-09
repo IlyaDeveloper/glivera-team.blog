@@ -1,0 +1,108 @@
+//* Map size devices for media query
+$wideScreens: (
+  phonesSm: 340px,
+  phones: 480px,
+  phonesLg: 640px,
+  tablet: 768px,
+  laptop: 992px,
+  desktopSm: 1024px,
+  desktopMd: 1170px,
+  desktop: 1280px,
+  notebook: 1366px,
+  notebookLg: 1600px,
+  fullHD: 1800px,
+  retina: 2100px,
+  retina4k: 3656px,
+  retina5k: 5100px,
+  retina8k: 7600px
+);
+
+$customContainer: true;
+$containerLimit: rem(screens(desktopMd)) + rem(32);
+$containerOffset: calc(var(--container-gutter) * -1);
+$contentGutter: rem(16) !default;
+$contentGutterX2: rem(24) !default;
+$contentGutterX3: rem(48) !default;
+$contentGutterX4: rem(96) !default;
+$sectionSpacer: var(--section-spacer, rem(70)) !default;
+
+$themes-map: (
+  default:(
+    primary: #4CB649,
+    primary-dark: #5DDF5A,
+    secondary: #FF8D00,
+    secondary-dark: #FFA400,
+    //tertiary: #E6EAEE,
+    light: #ffffff,
+    dark: #22252E,
+    base: var(--cl-dark),
+    //border: #ffffff,
+    //error: #ff5656,
+    //warning: #fffb53,
+    //success: #00FFBC
+  ),
+);
+
+$primary: var(--cl-primary);
+$primary-dark: var(--cl-primary-dark);
+$secondary: var(--cl-secondary);
+$tertiary: var(--cl-tertiary);
+
+$light: var(--cl-light);
+
+$dark: var(--cl-dark);
+
+//$error: var(--cl-error);
+//$warning: var(--cl-warning);
+//$success: var(--cl-success);
+
+$base-color: var(--cl-base);
+//$border-color: var(--cl-border);
+
+//* transitions && animations
+$transition-default: 0.44s linear !default;
+$transition-border: border-color $transition-default !default;
+$transition-shadow: box-shadow $transition-default !default;
+
+$transition-start-delay: var(--transition-start-delay, 1.8s);
+$transition-start-duration: var(--transition-start-duration, 1s);
+$global-animation-state: var(--gm-play-animation, paused);
+$transition-function: cubic-bezier(.2, .63, .59, .84); //cubic-bezier(0,.89,.36,1.22);
+
+$base-font-color: $secondary !default;
+$base-font-size-color: 16px !default;
+
+//$font-family-primary: 'Montserrat', sans-serif;
+$font-family-primary: 'Roboto', sans-serif;;
+//$font-family-alternative: 'Raleway', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif;
+$font-family-secondary: 'Public Sans', sans-serif; //'Halenoir Compact';
+
+// * shadows
+$sh-card: drop-shadow(rem(0) rem(8) rem(16) rgba(0, 0, 0, 0.101961));
+$sh-text: rem(0) rem(1) rem(0) $light;
+
+
+//* Scrolls
+$scroll-size: var(--scroll-size, rem(5));
+$scroll-border-radius: 0;
+$scroll-thumb-color: $primary;
+$scroll-thumb-hover-color: $primary-dark;
+$scroll-track-color: $light;
+$scroll-track-line: inset 0 0 0 0px $scroll-track-color;
+
+//* cursor
+$cursor-size: rem(30);
+$cursor-color: $secondary;
+$cursor-color-active: $primary-dark;
+
+//* Loader
+$loader-size: rem(48);
+
+//* z-index
+$z-index-step: 10 !default;
+$z-index: (
+  start: 10,
+  middle: 50,
+  header: 100,
+  modal: 1000
+) !default;

@@ -1,0 +1,37 @@
+@mixin scroll-small {
+  scrollbar-width: thin;
+  scrollbar-color: $scroll-thumb-color $scroll-track-color;
+  scrollbar-face-color: $scroll-thumb-color;
+  scrollbar-track-color: $scroll-track-color;
+
+  &::-webkit-scrollbar {
+    width: $scroll-size;
+    height: $scroll-size;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: $scroll-border-radius;
+    background: $scroll-thumb-color;
+
+    transition: background-color $transition-default;
+    box-shadow: $scroll-track-line;
+    will-change: background-color;
+
+    &:hover {
+      background-color: $scroll-thumb-hover-color;
+    }
+  }
+
+  &::-webkit-scrollbar-track {
+    border-radius: $scroll-border-radius;
+    background: $scroll-track-color;
+  }
+}
+
+%scroll-small {
+  @include scroll-small;
+}
+
+//%scroll-small-offset {
+//  @include scroll-offset($scroll-size);
+//}

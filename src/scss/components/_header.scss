@@ -1,0 +1,338 @@
+.header {
+  --container-align-items: center;
+  --container-limit: #{rem(screens(desktop)) + ($contentGutter*2)};
+  --container-flex-flow: row;
+
+  --button-hover-background: #{$light};
+  --button-hover-color: #{$primary};
+  --glob-animation-prop: none;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: z-index(header);
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  width: 100%;
+  height: var(--header-height);
+
+  padding: rem(20) 0;
+
+  color: var(--header-color, $light);
+
+  background: var(--header-background, transparent);
+
+  transition: $transition-default;
+  transition-property: background-color, color, padding, height;
+
+  animation: show-block $transition-start-delay $transition-start-duration cubic-bezier(.17, .67, .83, .67) 1 forwards;
+
+  &.--on-scroll, &.--while {
+    --logo-color: #{$primary};
+    --header-height: auto;
+
+    padding: rem(8) 0;
+
+    background: var(--header-background, $light);
+    color: var(--header-color, $dark);
+
+    box-shadow: rem(-12) rem(14) rem(44) rgba(230, 234, 238, 0.54);
+  }
+
+  &__nav {
+    display: inline-flex;
+    flex-flow: row nowrap;
+    align-items: center;
+
+    margin: auto rem(38) auto auto;
+  }
+
+  &__link {
+    position: relative;
+
+    white-space: nowrap;
+
+    &:not(:last-of-type) {
+      margin-right: var(--header-link-margin, rem(38));
+    }
+
+    &:last-of-type {
+      margin-right: var(--header-link-last-margin, rem(38));
+    }
+
+    &:before {
+      position: absolute;
+      top: rem(-5);
+      right: rem(-10);
+      bottom: rem(-5);
+      left: rem(-10);
+      z-index: -1;
+
+      content: '';
+
+      border-radius: rem(30);
+      background: $light;
+      opacity: var(--header-link-before-op, 0);
+
+      transition: opacity .5s linear;
+    }
+
+    @include only-mouse {
+      &:hover {
+        --header-link-before-op: 1;
+        color: var(--header-link-color-hover, $primary);
+      }
+    }
+  }
+
+  &__menu {
+    position: relative;
+    z-index: $z-index-step + 1;
+
+    width: rem(36);
+    height: rem(36);
+
+    padding: 0;
+    margin: 0 0 0 rem(24);
+
+    outline: none;
+    color: currentColor;
+
+    border: none;
+    background: none;
+    cursor: pointer;
+
+    -webkit-appearence: none;
+    -webkit-tap-highlight-color: transparent;
+
+    svg {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+
+      display: block;
+
+      width: rem(64);
+      height: rem(48);
+
+      stroke: var(--header-color, currentColor);
+      stroke-width: 4px;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+
+      fill: none;
+
+      transform: translate(-50%, -50%);
+
+      path {
+        transition: stroke-dasharray var(--duration, .85s) var(--easing, ease) var(--delay, 0s), stroke-dashoffset var(--duration, .85s) var(--easing, ease) var(--delay, 0s);
+        stroke-dasharray: var(--array-1, 26px) var(--array-2, 100px);
+        stroke-dashoffset: var(--offset, 126px);
+        transform: translateZ(0);
+
+        &:nth-child(2) {
+          --duration: .7s;
+          --easing: ease-in;
+          --offset: 100px;
+          --array-2: 74px;
+        }
+
+        &:nth-child(3) {
+          --offset: 133px;
+          --array-2: 107px;
+        }
+      }
+    }
+
+    &.--is-active {
+      --header-color: #{$primary};
+
+      svg {
+        path {
+          --offset: 57px;
+
+          &:nth-child(1),
+          &:nth-child(3) {
+            --delay: .15s;
+            --easing: cubic-bezier(.2, .4, .2, 1.1);
+          }
+
+          &:nth-child(2) {
+            --duration: .4s;
+            --offset: 2px;
+            --array-1: 1px;
+          }
+
+          &:nth-child(3) {
+            --offset: 58px;
+          }
+        }
+      }
+    }
+  }
+
+  @include max-wide(laptop) {
+    --header-link-margin: 4%;
+    --header-link-last-margin: #{rem(38)};
+  }
+
+  @include max-wide(tablet) {
+    &__nav {
+      max-width: 0;
+      margin: auto rem(24) auto auto;
+
+      visibility: hidden;
+    }
+  }
+
+  @include min-wide(tablet) {
+    &__menu {
+      display: none !important;
+    }
+  }
+
+  @include max-wide(phones) {
+    .button.--line {
+      padding-left: rem(20);
+      padding-right: rem(20);
+    }
+  }
+
+  @include max-wide(phonesSm) {
+    &__nav {
+      margin: 0 auto 0 rem(-6);
+    }
+  }
+}
+
+.mobile-menu {
+  position: fixed;
+
+  z-index: $z-index-step;
+  left: auto !important;
+
+  display: flex;
+  justify-content: flex-end;
+
+  height: 100vh;
+  width: 100%;
+
+  overflow: hidden;
+  transition: .6s linear;
+  transition-property: opacity, transform, top, right, visibility;
+
+  &, &__btn {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  &:not(.--is-open) {
+    --mobile-menu-link-opacity: 0;
+
+    top: -100vh;
+    right: -100vw;
+
+    left: auto;
+
+    max-width: 0;
+    max-height: 0;
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transform: scale(0);
+    transform-origin: right top;
+
+    .mobile-menu__content {
+      width: 0;
+      padding: 0;
+      height: 0;
+    }
+  }
+
+  &__content {
+    z-index: 2;
+
+    display: grid;
+    grid-gap: rem(20);
+    grid-auto-rows: max-content;
+    justify-items: flex-end;
+
+    flex: 1 1;
+
+    width: 100%;
+    max-width: 100vh;
+    height: 100vh;
+
+    padding: $contentGutterX4 $contentGutterX3 $contentGutterX3;
+
+    color: $dark;
+    font-size: rem(28);
+    font-weight: 600;
+    text-align: right;
+
+    border-radius: 0 0 0 rem(320);
+    backdrop-filter: blur(20px);
+    background: #ffffffb0;
+
+    filter: drop-shadow(rem(-12) rem(14) rem(44) rgba(230, 234, 238, 0.54));
+
+    transition: width .3s ease-in-out;
+
+    overflow: hidden;
+  }
+
+  &__link {
+    --link-hover-color: #{$primary};
+
+    position: relative;
+
+    display: inline-flex;
+
+    white-space: nowrap;
+
+    opacity: var(--mobile-menu-link-opacity, 1);
+
+    transition: opacity 0.3s .8s ease-in;
+
+    &:before {
+      position: absolute;
+      top: 115%;
+      right: 0;
+      left: var(--mobile-menu-link, calc(100% - #{rem(3)}));
+
+      min-width: rem(3);
+      min-height: rem(3);
+
+      content: '';
+
+      border-radius: rem(3);
+      background: $primary;
+
+      transition: left, .6s cubic-bezier(1, 0.1, 0.1, .1);
+    }
+
+    @include only-mouse {
+      &:hover {
+        --mobile-menu-link: 0;
+      }
+    }
+  }
+
+  &__btn {
+    position: absolute;
+    z-index: 0;
+
+    width: 100%;
+
+    backdrop-filter: blur(10px);
+    opacity: 1;
+  }
+}

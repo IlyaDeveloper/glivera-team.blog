@@ -1,0 +1,25 @@
+.logo {
+  display: inline-flex;
+  color: var(--logo-color, $light);
+
+  //pointer-events: none;
+
+  path {
+    fill: currentColor;
+  }
+
+  @include only-mouse {
+    &:hover {
+      color: var(--logo-color, $light);
+
+      opacity: 0.8;
+    }
+  }
+
+  @include max-wide(phones) {
+    svg {
+      transform: scale(0.77);
+      transform-origin: left center;
+    }
+  }
+}

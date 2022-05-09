@@ -1,0 +1,28 @@
+header.header(class=headerClass)
+  article.container
+    include ../ui/_logo
+
+    nav.header__nav
+      each item in HEADER_MENU
+        a.header__link(href=item.link target=item.target)=item.name
+
+    +button('https://newsurrogacy.com/?consultation:true=',HEADER_BTN, '--line')
+
+    button.header__menu(type='button')
+      svg(viewbox='0 0 64 48')
+        path(d='M19,15 L45,15 C70,15 58,-2 49.0177126,7 L19,37')
+        path(d='M19,24 L45,24 C61.2371586,24 57,49 41,33 L32,24')
+        path(d='M45,33 L19,33 C-8,33 6,-2 22,14 L45,37')
+
+    article.mobile-menu
+      nav.mobile-menu__content
+        each item in HEADER_MOM_MENU
+          a.mobile-menu__link(href=item.link)=item.name
+        hr
+        each item in HEADER_MOM_MENU_2
+          a.mobile-menu__link(href='https://newsurrogacy.com/' + item.link target='_blank')=item.name
+        hr
+        each item in HEADER_MOM_MENU_3
+          a.mobile-menu__link(href='https://newsurrogacy.com/' + item.link target='_blank')=item.name
+
+      button.mobile-menu__btn(type='button')

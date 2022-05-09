@@ -1,0 +1,181 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+
+  box-sizing: border-box;
+
+  //transition: $transition-default;
+  //transition-property: color, background-color;
+}
+
+html {
+  font-family: $font-family-primary;
+  font-size: $base-font-size-color;
+  font-weight: normal;
+  text-align: left;
+  line-height: 140%;
+  letter-spacing: normal;
+  color: $base-color;
+
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+
+  scroll-behavior: smooth;
+
+  &[lang="ru"] {
+    font-family: $font-family-alternative;
+
+    @include max-wide(laptop) {
+      .caption.--h2 {
+        max-width: rem(960);
+      }
+    }
+  }
+
+  &[loading="true"] {
+    &:before {
+      position: fixed;
+      top: calc(50% - (#{$loader-size} / 2)) !important;
+      left: calc(50% - (#{$loader-size} / 2)) !important;
+      z-index: z-index('modal')  + $z-index-step;
+
+      width: $loader-size;
+      height: $loader-size;
+
+      content: '';
+      color: $primary;
+
+      border: rem(2) solid transparent;
+      border-top-color: currentColor;
+      border-left-color: currentColor;
+      border-radius: 50%;
+
+      animation: .4s linear infinite rotate;
+    }
+
+    &:after {
+      position: fixed;
+      bottom: 0;
+      left: 50%;
+
+      display: inline-flex;
+
+      padding: rem(2) rem(8) 0;
+
+      font-weight: 500;
+      font-size: rem(14);
+
+      content: 'New Hope urrogacy loading page...';
+      color: $light;
+      line-height: 1.4;
+      white-space: nowrap;
+
+      border-radius: rem(6) rem(6) 0 0;
+      background-color: $primary;
+
+      transform: translate(-50%, 0);
+    }
+
+    body {
+      visibility: hidden;
+      animation: stop;
+    }
+  }
+
+  &[loading="false"] {
+    --gm-play-animation: start;
+  }
+
+  @media (max-width: 1160px) {
+    font-size: 75%;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 82%;
+  }
+
+  @media (max-width: 380px) {
+    font-size: 76%;
+  }
+
+  @media (max-width: 340px) {
+    font-size: 66%;
+  }
+}
+
+body {
+  display: flex;
+  flex-flow: column;
+
+  min-width: 100vw;
+  min-height: 100vh;
+
+  margin: 0;
+  padding: var(--header-height) 0 0;
+
+  background: var(--main-bg, $light);
+
+  animation: smooth-opacity $transition-start-duration .0s $transition-function 1 forwards;
+  animation-play-state: $global-animation-state;
+}
+
+a {
+  color: var(--link-color, currentColor);
+
+  text-decoration: none;
+
+  user-select: none;
+
+  transition: $transition-default;
+  transition-property: color;
+
+  @include only-mouse {
+    &:hover {
+      color: var(--link-hover-color, $secondary);
+    }
+  }
+}
+
+mark {
+  color: currentColor;
+  background: unset;
+}
+
+p {
+  max-width: var(--p-max-width, unset);
+
+  margin: var(--p-margin, 0);
+
+  font-weight: normal;
+  font-size: rem(20);
+  line-height: 140%;
+}
+
+*::selection {
+  background-color: $secondary;
+  color: $light;
+}
+
+.container {
+  position: var(--container-position, unset);
+
+  display: var(--container-block, flex);
+  align-items: var(--container-align-items, flex-start);
+  justify-content: var(--container-justify-content, flex-start);
+  flex-flow: var(--container-flex-flow, column);
+
+  width: 100%;
+  max-width: var(--container-limit, auto);
+
+  padding-right: var(--container-gutter, 0);
+  padding-left: var(--container-gutter, 0);
+  margin-right: auto;
+  margin-left: auto;
+
+  @media (max-height: 420px) {
+    @include phones-fit-max-evn(16px);
+  }
+}

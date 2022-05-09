@@ -1,0 +1,74 @@
+.consent {
+  --link-color: #{$primary};
+
+  position: fixed;
+  bottom: rem(24);
+  left: 50%;
+  z-index: z-index(header);
+
+  width: max-content;
+  max-width: rem(540);
+
+  padding: $contentGutterX2;
+
+  border-radius: rem(20);
+
+  background: $light;
+  box-shadow: $sh-card;
+
+  transform: translate(-50%, var(--consent-translate, 0));
+  transition: transform $transition-default;
+
+  &.--hide {
+    --consent-translate: 150%;
+
+  }
+
+  &, &__main {
+    display: flex;
+    align-items: center;
+    gap: rem(16);
+  }
+
+  &__main {
+    flex-flow: column;
+    align-items: baseline;
+
+    font-size: rem(18);
+    font-weight: 600;
+    line-height: 1.4;
+  }
+
+  &__text {
+    font-size: rem(14);
+    font-weight: 400;
+  }
+
+  &__btn {
+    display: inline-flex;
+    align-items: center;
+
+    padding: rem(8) rem(20);
+
+    font-size: rem(14);
+    font-weight: 600;
+    color: $light;
+
+    text-transform: uppercase;
+
+    border: none;
+    border-radius: rem(8);
+    background: $primary;
+
+    @include only-mouse {
+      &:hover {
+        background: $primary-dark;
+      }
+    }
+  }
+
+  @include max-wide(phonesLg){
+    max-width: 90vw;
+
+  }
+}

@@ -1,0 +1,14 @@
+%position-full {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+%glob-animation-to-up {
+  --show-block-trn-from: translate(0, 10vh);
+  --show-block-trn-to: translate(0, 0);
+
+  animation: var(--glob-animation-prop, show-block) $transition-start-delay $transition-start-duration $transition-function 1 forwards;
+  //animation-play-state: $global-animation-state;
+}

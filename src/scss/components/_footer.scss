@@ -1,0 +1,121 @@
+.footer {
+  --container-align-items: center;
+  --link-hover-color: #{$primary};
+
+  position: relative;
+  z-index: $z-index-step;
+  display: flex;
+  justify-content: center;
+
+  padding: rem(28) 0;
+
+  //background: rgb(255,255,255);
+  background: linear-gradient(0deg, rgba(255,255,255,1) 30%, rgba(255,255,255,0) 97%);
+
+  overflow: hidden;
+
+  &__nav {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    gap: $contentGutterX2;
+
+    margin: rem(68) auto rem(48);
+
+    width: 100%;
+    max-width: rem(772);
+
+    ul {
+      display: grid;
+
+      grid-gap: rem(8);
+    }
+  }
+
+  &__link {
+    font-size: rem(14);
+    line-height: rem(17);
+
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.05%;
+
+    &.--soc {
+     & > svg path {
+        fill: var(--footer-soc-color, $dark)
+      }
+    }
+
+    @include only-mouse {
+      &:hover {
+        --footer-soc-color: #{$primary};
+      }
+    }
+  }
+
+  &__soc {
+    position: relative;
+
+    display: grid;
+    grid-auto-flow: column dense;
+    grid-gap: rem(24);
+
+    padding: rem(24) rem(58);
+
+    background: $light;
+
+    &:before {
+      position: absolute;
+      top: 50%;
+      left: -50vw;
+      right: -50vw;
+      z-index: -1;
+
+      content: '';
+
+      border-bottom: rem(1) solid $tertiary;
+    }
+  }
+
+  &__down {
+    display: inline-grid;
+    grid-auto-flow: column;
+    grid-auto-columns: max-content;
+    grid-gap: rem(40);
+
+    font-size: rem(12);
+    line-height: rem(15);
+
+    text-align: center;
+
+    white-space: nowrap;
+    opacity: 0.8;
+
+    a {
+      font-size: inherit;
+      line-height: inherit;
+    }
+  }
+
+  .caption {
+    max-width: 80vw;
+
+    text-align: center;
+  }
+
+  @include max-wide(phones) {
+    &__nav {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-gap: $contentGutterX2;
+      justify-content: space-around;
+
+      & > ul {
+        &:nth-of-type(2n+1) {
+          justify-items: flex-end;
+          text-align: right;
+        }
+      }
+    }
+  }
+}
