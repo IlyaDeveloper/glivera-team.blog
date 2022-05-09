@@ -1,4 +1,6 @@
 .alert {
+  --link-color: #{$light};
+
   position: fixed;
   inset: 0 0 auto 0;
   z-index: z-index(header) + $z-index-step;
@@ -6,15 +8,33 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: rem(32);
+
+  padding: rem(10) var(--container-gutter);
 
   font-weight: 400;
   font-size: rem(12);
   line-height: rem(16);
+  color: $tertiary;
 
-  min-height: rem(40);
+  min-height: var(--alert-height,rem(40));
 
   background: $dark;
+  opacity: 0;
+  transform: translateY(-100%);
+  transition: $transition-default;
+
+  &.--is-show {
+    transform: none;
+    opacity: 1;
+  }
+
+  &__wrap {
+    display: grid;
+    grid-auto-flow: column;
+    grid-gap: rem(32);
+    align-items: center;
+
+  }
 
   &__warn {
     display: inline-flex;
@@ -22,6 +42,7 @@
     gap: rem(4);
 
     color: $secondary;
+    font-weight: bold;
   }
 
   &__item {
@@ -29,7 +50,19 @@
   }
 
   &__close {
+    position: absolute;
+    top: 50%;
+    right: rem(20);
 
+    font-size: rem(14);
+
+    transform: translateY(-50%);
+
+    @include only-mouse {
+      &:hover {
+        color: $secondary;
+      }
+    }
   }
 
 }

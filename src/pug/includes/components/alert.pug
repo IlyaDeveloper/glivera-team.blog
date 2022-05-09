@@ -1,5 +1,5 @@
-article.alert
-  .alert__content
+article.alert.--is-show
+  .alert__wrap
     string.alert__warn
       svg(width='22' height='19' viewbox='0 0 22 19' fill='none' xmlns='http://www.w3.org/2000/svg')
         path(fill-rule='evenodd' clip-rule='evenodd' d='M22 19L11 0L0 19H22ZM10 16V14H12V16H10ZM10 12H12V8H10V12Z' fill='currentColor')
@@ -9,9 +9,4 @@ article.alert
     .alert__item Your ISP: Comcast Cable
     a.alert__link(href='/') Learn More ›
 
-  .alert__close
-    svg(width='14' height='14' viewbox='0 0 14 14' fill='none')
-      path(d='M14 1.41L12.59 0L7 5.59L1.41 0L0 1.41L5.59 7L0 12.59L1.41 14L7 8.41L12.59 14L14 12.59L8.41 7L14 1.41Z' fill='#889099')
-
-
-
+  .alert__close.gli-close

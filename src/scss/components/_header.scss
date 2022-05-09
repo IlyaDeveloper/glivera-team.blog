@@ -8,9 +8,7 @@
   --glob-animation-prop: none;
 
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
+  inset: var(--header-top) 0 auto;
   z-index: z-index(header);
 
   display: flex;

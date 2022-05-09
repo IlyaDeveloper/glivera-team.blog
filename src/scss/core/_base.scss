@@ -104,7 +104,7 @@ body {
   min-height: 100vh;
 
   margin: 0;
-  padding: var(--header-height) 0 0;
+  padding: calc(var(--header-top,0) + var(--header-height)) 0 0;
 
   background: var(--main-bg, $light);
 

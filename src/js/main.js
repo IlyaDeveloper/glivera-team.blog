@@ -86,41 +86,6 @@ const loaderInit = () => {
   }, loaderDelay);
 }
 
-const languageAsideInit = () => {
-  const btn = document.querySelectorAll('.choose-language__btn');
-  const btnToUp = document.querySelector('.choose-language__to-up');
-  const lastElm = document.querySelector('.footer');
-  const getLang = ref.html.getAttribute('lang');
-
-  btn.forEach((event) => {
-    if (getLang === 'en') {
-      btn[0].classList.add('--is-active');
-      btn[1].classList.remove('--is-active')
-    } else if (getLang === 'ru') {
-      btn[0].classList.remove('--is-active');
-      btn[1].classList.add('--is-active')
-    }
-
-    event.addEventListener('click', () => {
-      btn.classList.remove('--is-active');
-      event.classList.add('--is-active')
-    })
-  })
-
-  window.addEventListener('scroll', (e) => {
-    (ref.html.scrollTop < ref.html.scrollHeight - (ref.html.clientHeight + lastElm.clientHeight))
-      ? btnToUp.classList.add('gm-hide')
-      : btnToUp.classList.remove('gm-hide')
-  })
-
-  btnToUp.addEventListener('click', () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth"
-    })
-  })
-}
-
 const consentInit = () => {
   const block = document.querySelector('.consent');
   const btn = document.querySelector('.consent__btn');
@@ -138,10 +103,38 @@ const consentInit = () => {
   })
 }
 
+const alertInit = () => {
+  const alert = document.querySelector('.alert');
+  const btn = document.querySelector('.alert__close');
+
+  const topSpacer = (val) => {
+    ref.html.setAttribute('style', `--header-top:${val};`)
+  }
+
+  const openAlert = () => {
+    (alert.classList.contains('--is-show'))
+      ? topSpacer(alert.clientHeight)
+      : topSpacer(0);
+
+    alert.classList.add('--is-show');
+  }
+
+  const hideAlert = () => {
+    alert.classList.remove('--is-show');
+    topSpacer(0);
+  }
+
+  openAlert();
+
+  btn.addEventListener('click', () => {
+    hideAlert();
+  });
+}
+
 window.addEventListener('DOMContentLoaded', () => {
   loaderInit()
-  mobileMenuInit();
+  // consentInit()
+  // mobileMenuInit();
   headerScrollInit();
-  languageAsideInit();
-  consentInit()
+  alertInit()
 });

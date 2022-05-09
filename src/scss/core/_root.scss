@@ -4,6 +4,7 @@
   --container-gutter: #{$contentGutter};
 
   --header-height: #{rem(90)};
+  //--alert-height: #{rem(40)};
 
   @include generate-themes($themes-map);
 
