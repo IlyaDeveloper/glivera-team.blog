@@ -32,11 +32,13 @@ $themes-map: (
     primary-dark: #5DDF5A,
     secondary: #FF8D00,
     secondary-dark: #FFA400,
-    //tertiary: #E6EAEE,
+    tertiary: #889099,
+    tertiary-dark:#323642,
     light: #ffffff,
+    light-dark: #F7F7F7,
     dark: #22252E,
     base: var(--cl-dark),
-    //border: #ffffff,
+    border: #D7D8D9,
     //error: #ff5656,
     //warning: #fffb53,
     //success: #00FFBC
@@ -46,9 +48,12 @@ $themes-map: (
 $primary: var(--cl-primary);
 $primary-dark: var(--cl-primary-dark);
 $secondary: var(--cl-secondary);
+$secondary-dark: var(--cl-secondary-dark);
 $tertiary: var(--cl-tertiary);
+$tertiary-dark: var(--cl-tertiary-dark);
 
 $light: var(--cl-light);
+$light-dark: var(--cl-light-dark);
 
 $dark: var(--cl-dark);
 
@@ -73,13 +78,52 @@ $base-font-color: $secondary !default;
 $base-font-size-color: 16px !default;
 
 //$font-family-primary: 'Montserrat', sans-serif;
-$font-family-primary: 'Roboto', sans-serif;;
+$font-family-primary: 'Roboto', sans-serif;
+;
 //$font-family-alternative: 'Raleway', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif;
 $font-family-secondary: 'Public Sans', sans-serif; //'Halenoir Compact';
 
 // * shadows
 $sh-card: drop-shadow(rem(0) rem(8) rem(16) rgba(0, 0, 0, 0.101961));
 $sh-text: rem(0) rem(1) rem(0) $light;
+
+
+//* Icons
+$font-path: '../../dist/fonts' !default;
+
+$icon-font-family: "glivera-icons" !default;
+$icon-font-prefix: 'gli-';
+$icon-font-path: $font-path + '/#{$icon-font-family}' !default;
+
+$gli-caret: "\e900";
+$gli-soc-gp: "\e901";
+$gli-wave: "\e902";
+$gli-notif: "\e903";
+$gli-soc-ln: "\e904";
+$gli-soc-yt: "\e905";
+$gli-close: "\e906";
+$gli-soc-ts: "\e907";
+$gli-soc-tw: "\e909";
+$gli-soc-fb: "\e90a";
+$gli-arrow-right: "\e90b";
+$gli-arrow-left: "\e908";
+$gli-comment: "\e90c";
+
+$icons-font-map: (
+  caret:$gli-caret,
+  soc-gp:$gli-soc-gp,
+  wave:$gli-wave,
+  notif:$gli-notif,
+  soc-ln:$gli-soc-ln,
+  soc-yt:$gli-soc-yt,
+  close:$gli-close,
+  soc-ts:$gli-soc-ts,
+  soc-tw:$gli-soc-tw,
+  soc-fb:$gli-soc-fb,
+  arrow-right:$gli-arrow-right,
+  arrow-left:$gli-arrow-left,
+  comment:$gli-comment
+);
 
 
 //* Scrolls

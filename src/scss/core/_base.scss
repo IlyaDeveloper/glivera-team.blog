@@ -25,16 +25,6 @@ html {
 
   scroll-behavior: smooth;
 
-  &[lang="ru"] {
-    font-family: $font-family-alternative;
-
-    @include max-wide(laptop) {
-      .caption.--h2 {
-        max-width: rem(960);
-      }
-    }
-  }
-
   &[loading="true"] {
     &:before {
       position: fixed;

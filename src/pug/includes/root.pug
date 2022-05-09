@@ -5,6 +5,7 @@
 include ../includes/ui/_button
 
 doctype html
+
 block core
   include ../includes/vars
 
@@ -22,10 +23,11 @@ html(lang=lang loading="true" translate="no")
     main.layout
       block content
 
-    include ../includes/components/consent
+    include ../includes/components/alert
+    //include ../includes/components/consent
 
     block footer
-      include ../includes/components/footer
+      //include ../includes/components/footer
 
     block scripts
       include ../includes/scripts

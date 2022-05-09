@@ -53,16 +53,9 @@
 
   &__link {
     position: relative;
+    display: inline-flex;
 
     white-space: nowrap;
-
-    &:not(:last-of-type) {
-      margin-right: var(--header-link-margin, rem(38));
-    }
-
-    &:last-of-type {
-      margin-right: var(--header-link-last-margin, rem(38));
-    }
 
     &:before {
       position: absolute;
@@ -76,17 +69,18 @@
 
       border-radius: rem(30);
       background: $light;
-      opacity: var(--header-link-before-op, 0);
 
       transition: opacity .5s linear;
     }
 
     @include only-mouse {
       &:hover {
-        --header-link-before-op: 1;
-        color: var(--header-link-color-hover, $primary);
       }
     }
+  }
+
+  &__btns{
+
   }
 
   &__menu {

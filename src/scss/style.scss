@@ -8,6 +8,7 @@
 @import "core/extends";
 @import "core/animations";
 @import "core/gm";
+@import "core/icons";
 @import "core/root";
 @import "core/base";
 
@@ -18,7 +19,7 @@
 /*----------------------------------- COMPONENTS */
 @import "components/layout";
 @import "components/header";
-@import "components/footer";
+//@import "components/footer";
 @import "components/consent";
 @import "components/not-found";
 @import "components/alert";

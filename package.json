@@ -20,36 +20,34 @@
     "copy-files": "npm run copy-img & npm run copy-assets & npm run copy-data",
     "copy-host-files": "cp -r src/assets/host/* ./dist && cp -r src/assets/host/.htaccess ./dist",
     "init": "npm run clean-dist && npm run copy-files",
-    "start": "npm run clean-dist && npm run copy-host-files && parcel src/pug/pages/ru/index.pug src/pug/pages/*.pug src/pug/pages/404.pug --open",
-    "build": "npm run clean-dist && npm run copy-host-files && npm run copy-poster && parcel build src/pug/pages/ru/index.pug src/pug/pages/*.pug src/pug/pages/404.pug",
-    "deploy": "rsync -avz --delete -e 'ssh -p 21098' ./dist/ newhopes@usshared08.twinservers.net:~/public_html/"
+    "start": "npm run clean-dist && npm run copy-host-files && npm run copy-assets && parcel src/pug/pages/index.pug src/pug/pages/*.pug --open",
+    "build": "npm run clean-dist && npm run copy-host-files && npm run copy-poster && parcel build src/pug/pages/*.pug"
   },
   "devDependencies": {
-    "@parcel/resolver-glob": "^2.1.1",
+    "@parcel/resolver-glob": "^2.5.0",
     "@parcel/transformer-image": "^2.1.1",
-    "@parcel/transformer-jsonld": "^2.2.1",
-    "@parcel/transformer-pug": "^2.2.1",
-    "@parcel/transformer-sass": "^2.1.1",
-    "autoprefixer": "^10.4.2",
+    "@parcel/transformer-jsonld": "^2.5.0",
+    "@parcel/transformer-pug": "^2.5.0",
+    "@parcel/transformer-sass": "^2.5.0",
+    "autoprefixer": "^10.4.7",
     "cross-env": "^7.0.3",
-    "parcel": "latest",
+    "parcel": "^2.5.0",
     "parcel-plugin-static-files-copy": "^2.6.0",
-    "postcss": "^8.4.5",
+    "postcss": "^8.4.13",
     "posthtml-img-autosize": "^0.1.6",
-    "posthtml-include": "^1.7.2",
-    "posthtml-modules": "^0.8.0",
+    "posthtml-include": "^1.7.3",
+    "posthtml-modules": "^0.8.1",
     "rsync": "^0.6.1",
-    "sass": "^1.46.0"
+    "sass": "^1.51.0"
   },
   "dependencies": {
-    "cssnano": "^5.0.15",
+    "cssnano": "^5.1.7",
     "parcel-plugin-metaimage": "^1.2.4",
     "parcel-resolver-ignore": "^2.0.0",
     "scss": "^0.2.4"
   },
   "resolvers": {},
   "parcelIgnore": [
-    "ru.html",
     "poster.jpg"
   ]
 }

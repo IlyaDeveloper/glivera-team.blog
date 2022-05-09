@@ -1,3 +1,35 @@
 .alert {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: z-index(header) + $z-index-step;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: rem(32);
+
+  font-weight: 400;
+  font-size: rem(12);
+  line-height: rem(16);
+
+  min-height: rem(40);
+
+  background: $dark;
+
+  &__warn {
+    display: inline-flex;
+    align-items: center;
+    gap: rem(4);
+
+    color: $secondary;
+  }
+
+  &__item {
+
+  }
+
+  &__close {
+
+  }
 
 }

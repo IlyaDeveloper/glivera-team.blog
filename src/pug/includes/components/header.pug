@@ -3,10 +3,14 @@ header.header(class=headerClass)
     include ../ui/_logo
 
     nav.header__nav
-      each item in HEADER_MENU
-        a.header__link(href=item.link target=item.target)=item.name
+      a.header__link(href='') WHY US
+      a.header__link(href='') VPN APPS
+      a.header__link(href='') SUPPORT
+      a.header__link(href='') Resources
 
-    +button('https://newsurrogacy.com/?consultation:true=',HEADER_BTN, '--line')
+    .header__btns
+      +button('LOG IN', '--line')
+      +button('GET STARTED', )
 
     button.header__menu(type='button')
       svg(viewbox='0 0 64 48')
@@ -18,11 +22,5 @@ header.header(class=headerClass)
       nav.mobile-menu__content
         each item in HEADER_MOM_MENU
           a.mobile-menu__link(href=item.link)=item.name
-        hr
-        each item in HEADER_MOM_MENU_2
-          a.mobile-menu__link(href='https://newsurrogacy.com/' + item.link target='_blank')=item.name
-        hr
-        each item in HEADER_MOM_MENU_3
-          a.mobile-menu__link(href='https://newsurrogacy.com/' + item.link target='_blank')=item.name
 
       button.mobile-menu__btn(type='button')
