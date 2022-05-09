@@ -1,1 +1,22 @@
 section.featured
+  picture.featured__pic
+    source(media="min-width: 1600px" src='../../assets/images/first-img@2x.png')
+    img(src='../../assets/images/first-img.jpg', alt='')
+
+  .featured__content
+    p.featured__description TV Addons: Legal battle against Canadian media giants demonstrates severe consequences facing developers accused of copyright infringement
+
+    .featured__bottom
+      mark.featured__name
+        | Danica Sergison
+        span.featured__date JUL 08, 2018
+
+      .featured__links
+        +categoryLink('Copyright', '')
+        +categoryLink('News', '')
+        +categoryLink('Open', '')
+        +categoryLink('Source', '')
+        +categoryLink('Privacy', '')
+
+      +commentCounter('10')
+

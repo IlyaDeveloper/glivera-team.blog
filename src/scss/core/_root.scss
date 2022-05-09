@@ -3,7 +3,7 @@
   --container-limit: #{$containerLimit};
   --container-gutter: #{$contentGutter};
 
-  --header-height: #{rem(90)};
+  --header-height: #{rem(120)};
   //--alert-height: #{rem(40)};
 
   @include generate-themes($themes-map);
@@ -12,4 +12,3 @@
     --container-gutter: #{$contentGutterX2};
   }
 }
-

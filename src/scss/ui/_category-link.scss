@@ -1,0 +1,14 @@
+.category-link {
+  font-weight: 400;
+  font-size: rem(12);
+  line-height: rem(16);
+  letter-spacing: rem(0.5);
+  color: $primary;
+  text-transform: uppercase;
+
+  &:not(:last-of-type) {
+    &:after {
+      content: ', ';
+    }
+  }
+}

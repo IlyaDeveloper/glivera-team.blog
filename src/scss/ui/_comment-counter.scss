@@ -1,0 +1,15 @@
+.comment-counter{
+  display: inline-flex;
+  align-items: center;
+  gap: rem(10);
+
+  font-weight: 400;
+  font-size: rem(14);
+
+
+  color: $tertiary;
+
+  &:before{
+    @include pseudo-icon($gli-comment, 14)
+  }
+}

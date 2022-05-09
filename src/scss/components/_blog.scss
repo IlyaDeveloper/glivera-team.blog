@@ -1,0 +1,21 @@
+.blog{
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-gap: rem(40) rem(60);
+
+  &__top {
+    grid-area: 1/12 span;
+  }
+
+  &__tags {
+    grid-area: 2 / 12 span;
+  }
+
+  &__posts{
+    grid-area: 3 / 10 span;
+  }
+
+  &__aside{
+    grid-area: 3 / 2 span;
+  }
+}

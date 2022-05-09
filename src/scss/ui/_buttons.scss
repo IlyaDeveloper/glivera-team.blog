@@ -8,7 +8,10 @@
   align-items: center;
   justify-content: center;
 
-  font-weight: bold;
+  min-height: rem(40);
+  padding: rem(14) rem(32);
+
+  font-weight: 500;
   font-size: rem(16);
   text-transform: uppercase;
 
@@ -20,32 +23,16 @@
   &:not(.--line) {
     position: relative;
 
-    min-height: rem(40);
-
-    margin: 0 0 rem(6) rem(9);
-    padding: rem(14) rem(35);
-
     color: var(--button-color, $light);
 
     background: var(--button-background, linear-gradient(0deg, $primary 0%, $primary-dark 100%));
-
   }
 
   &.--line {
-    min-height: rem(48);
-
-    padding: rem(14) rem(40);
-
-    color: var(--button-color, currentColor);
+    color: var(--button-color, $primary);
 
     background: var(--button-background, transparent);
-    box-shadow: inset rem(0) rem(0) 0 rem(1) $primary ;
-  }
-
-  &.--light {
-    --button-background: #{$light} !important;
-
-    color: $primary;;
+    box-shadow: inset rem(0) rem(0) 0 rem(1) $primary;
   }
 
   @include only-mouse {

@@ -25,6 +25,9 @@ $contentGutterX2: rem(24) !default;
 $contentGutterX3: rem(48) !default;
 $contentGutterX4: rem(96) !default;
 $sectionSpacer: var(--section-spacer, rem(70)) !default;
+$radius: rem(6);
+//$radiusNormal: rem(12);
+//$radiusLarge: rem(16);
 
 $themes-map: (
   default:(
@@ -62,7 +65,7 @@ $dark: var(--cl-dark);
 //$success: var(--cl-success);
 
 $base-color: var(--cl-base);
-//$border-color: var(--cl-border);
+$border-color: var(--cl-border);
 
 //* transitions && animations
 $transition-default: 0.44s linear !default;
@@ -84,7 +87,7 @@ $font-family-primary: 'Roboto', sans-serif;
 $font-family-secondary: 'Public Sans', sans-serif; //'Halenoir Compact';
 
 // * shadows
-$sh-card: drop-shadow(rem(0) rem(8) rem(16) rgba(0, 0, 0, 0.101961));
+$sh-card: rem(0) rem(8) rem(16) rgba(0, 0, 0, 0.101961);
 $sh-text: rem(0) rem(1) rem(0) $light;
 
 

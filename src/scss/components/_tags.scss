@@ -1,0 +1,30 @@
+.tags {
+  display: flex;
+  align-items: center;
+  gap: rem(40);
+
+  padding: rem(21) rem(33);
+
+  font-weight: 500;
+  font-size: rem(14);
+  line-height: rem(18);
+  text-transform: uppercase;
+  color: $dark;
+  letter-spacing: rem(1);
+
+  border-radius: rem(4);
+  background: $light-dark;
+
+  &__links {
+    display: inline-flex;
+    gap: rem(32);
+
+    margin: auto auto auto 0;
+  }
+
+  &__tag {
+    letter-spacing: rem(0.8);
+
+    color: $primary;
+  }
+}
