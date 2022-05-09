@@ -20,32 +20,15 @@
   &:not(.--line) {
     position: relative;
 
-    min-height: rem(56);
+    min-height: rem(40);
 
     margin: 0 0 rem(6) rem(9);
     padding: rem(14) rem(35);
 
     color: var(--button-color, $light);
 
-    background: var(--button-background, $primary);
+    background: var(--button-background, linear-gradient(0deg, $primary 0%, $primary-dark 100%));
 
-    &:before {
-      position: absolute;
-      top: 0;
-      right: var(--button-offset-right, 0);
-      bottom: rem(-6);
-      left: var(--button-offset-left, rem(-9));;
-      z-index: -1;
-
-      content: '';
-
-      border-radius: inherit;
-      border: rem(3) solid var(--button-background, $primary);
-      background: unset;
-
-      transition: .5s linear;
-      transition-property: right, left, border-color;
-    }
   }
 
   &.--line {
@@ -55,9 +38,8 @@
 
     color: var(--button-color, currentColor);
 
-    border: rem(3) solid currentColor;
-
     background: var(--button-background, transparent);
+    box-shadow: inset rem(0) rem(0) 0 rem(1) $primary ;
   }
 
   &.--light {

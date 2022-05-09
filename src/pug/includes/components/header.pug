@@ -1,17 +1,5 @@
 header.header(class=headerClass)
   article.container
-    include ../ui/_logo
-
-    nav.header__nav
-      a.header__link(href='') WHY US
-      a.header__link(href='') VPN APPS
-      a.header__link(href='') SUPPORT
-      a.header__link(href='') Resources
-
-    .header__btns
-      +button('LOG IN', '--line')
-      +button('GET STARTED', )
-
     button.header__menu(type='button')
       svg(viewbox='0 0 64 48')
         path(d='M19,15 L45,15 C70,15 58,-2 49.0177126,7 L19,37')
@@ -24,3 +12,15 @@ header.header(class=headerClass)
           a.mobile-menu__link(href=item.link)=item.name
 
       button.mobile-menu__btn(type='button')
+
+    include ../ui/_logo
+
+    nav.header__nav
+      a.header__link(href='') WHY US
+      a.header__link(href='') VPN APPS
+      a.header__link(href='') SUPPORT
+      a.header__link(href='') Resources
+
+    .header__btns
+      +button('LOG IN', '--line',)
+      +button('GET STARTED', )

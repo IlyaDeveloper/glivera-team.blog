@@ -20,40 +20,46 @@
 
   padding: rem(20) 0;
 
-  color: var(--header-color, $light);
+  //color: var(--header-color, $dark);
 
-  background: var(--header-background, transparent);
+  background: var(--header-background, $light);
 
   transition: $transition-default;
   transition-property: background-color, color, padding, height;
 
   animation: show-block $transition-start-delay $transition-start-duration cubic-bezier(.17, .67, .83, .67) 1 forwards;
 
-  &.--on-scroll, &.--while {
-    --logo-color: #{$primary};
-    --header-height: auto;
-
-    padding: rem(8) 0;
-
-    background: var(--header-background, $light);
-    color: var(--header-color, $dark);
-
-    box-shadow: rem(-12) rem(14) rem(44) rgba(230, 234, 238, 0.54);
-  }
+  //&.--on-scroll, &.--while {
+  //  --logo-color: #{$primary};
+  //  --header-height: auto;
+  //
+  //  padding: rem(8) 0;
+  //
+  //  background: var(--header-background, $light);
+  //  color: var(--header-color, $dark);
+  //
+  //  box-shadow: rem(-12) rem(14) rem(44) rgba(230, 234, 238, 0.54);
+  //}
 
   &__nav {
     display: inline-flex;
     flex-flow: row nowrap;
     align-items: center;
 
-    margin: auto rem(38) auto auto;
+    margin: auto;
   }
 
   &__link {
     position: relative;
     display: inline-flex;
 
+    font-size: rem(14);
+    font-weight: 500;
+    letter-spacing: rem(0.8);
+
     white-space: nowrap;
+    text-transform: uppercase;
+
 
     &:before {
       position: absolute;
@@ -78,6 +84,8 @@
   }
 
   &__btns{
+    display: flex;
+    gap: rem(10);
 
   }
 

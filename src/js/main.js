@@ -108,7 +108,7 @@ const alertInit = () => {
   const btn = document.querySelector('.alert__close');
 
   const topSpacer = (val) => {
-    ref.html.setAttribute('style', `--header-top:${val};`)
+    ref.html.setAttribute('style', `--header-top:${val}px;`)
   }
 
   const openAlert = () => {
