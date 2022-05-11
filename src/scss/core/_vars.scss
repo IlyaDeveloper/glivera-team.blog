@@ -42,7 +42,7 @@ $themes-map: (
     dark: #22252E,
     base: var(--cl-dark),
     border: #D7D8D9,
-    //error: #ff5656,
+    error: #F24458,
     //warning: #fffb53,
     //success: #00FFBC
   ),
@@ -60,7 +60,7 @@ $light-dark: var(--cl-light-dark);
 
 $dark: var(--cl-dark);
 
-//$error: var(--cl-error);
+$error: var(--cl-error);
 //$warning: var(--cl-warning);
 //$success: var(--cl-success);
 

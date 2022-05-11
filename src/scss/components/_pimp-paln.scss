@@ -1,24 +1,168 @@
-.pimp-paln{
+.pimp-paln {
   padding: rem(100) 0 rem(57);
+
+  text-align: center;
 
   background: $dark;
 
-  &__capt{
+  &__capt {
+    margin: auto auto rem(40);
     font-weight: 300;
     font-size: rem(48);
-    line-height: rem(64);
-    /* identical to box height, or 133% */
-
-    text-align: center;
+    line-height: 133%;
     letter-spacing: rem(-0.5);
+    color: $light;
   }
 
-  &__item{
-
+  &__items {
+    display: flex;
+    gap: rem(20);
   }
 
-  &__payments{
-    
+  &__item {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+
+    width: rem(380);
+    height: rem(340);
+
+    padding: rem(40);
+
+    font-size: rem(14);
+    font-weight: 400;
+
+    border-radius: rem(4);
+    border: rem(4) solid transparent;
+    background: $light;
+
+    &.--select {
+      height: rem(380);
+
+      border-color: $secondary;
+    }
+  }
+
+  &__item-capt {
+    display: inline-flex;
+    flex-flow: column;
+    font-weight: 700;
+
+    &:after {
+
+      width: rem(24);
+      height: rem(2);
+
+      margin: rem(14) auto;
+
+      content: '';
+
+      border-radius: rem(3);
+      background: $primary;
+    }
+  }
+
+  &__item-price {
+    display: inline-flex;
+
+    font-weight: 300;
+    font-size: rem(56);
+    letter-spacing: rem(-1.5);
+
+    &:before {
+      align-self: flex-start;
+
+      font-size: rem(16);
+      content: '$';
+    }
+
+    &:after {
+      align-self: flex-end;
+
+      font-size: rem(24);
+      content: '/mo.';
+    }
+  }
+
+  &__item-desc {
+    display: inline-flex;
+    flex-flow: row wrap;
+    align-self: center;
+    justify-content: center;
+    gap: rem(8);
+
+    width: 100%;
+    max-width: rem(200);
+    min-height: rem(48);
+
+    margin-top: rem(18);
+
+    padding: rem(16) 0 rem(24);
+
+    font-size: rem(14);
+
+    border-top: rem(1) solid $border-color;
+
+    span {
+      margin-left: rem(8);
+
+      text-decoration: line-through;
+      color: $error;
+    }
+
+    strong {
+      flex: 1 1
+    }
+  }
+
+  &__payments {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    margin: rem(54) auto rem(33);
+
+    font-weight: 300;
+    font-size: rem(18);
+    line-height: rem(28);
+    color: $light;
+  }
+
+  &__logos {
+    display: flex;
+    align-items: center;
+    gap: rem(28);
+
+    margin-left: rem(30);
+
+    img {
+      display: inline-flex;
+
+      max-width: rem(100);
+      height: rem(60);
+
+      object-fit: contain;
+      object-position: center center;
+    }
+  }
+
+  &__links {
+  }
+
+  &__link {
+    color: $primary;
+
+    text-transform: uppercase;
+    font-weight: 500;
+
+    &:after {
+      margin: auto 0 auto rem(24);
+
+      @include pseudo-icon($gli-arrow-right, 15);
+
+    }
   }
 
 }
