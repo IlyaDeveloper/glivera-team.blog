@@ -53,11 +53,14 @@
   ]
 
 include _post-card
+
 .posts
   h1.caption Recent posts
+
   section.posts__list
     each item in blogList
-      +postCard(item.img, item.caption, item.author, item.data, item.category, item.comment)
-  footer.post-card__foot
+      +postCard(item.img, item.caption, item.author, item.data, item.category, item.comments)
+
+  footer.posts__foot
     +button('Older posts', '--line')
 

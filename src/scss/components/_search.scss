@@ -1,0 +1,42 @@
+.search {
+  position: relative;
+  display: flex;
+  align-items: center;
+
+  &:after {
+    position: absolute;
+    padding: 0 rem(20);
+
+    @include pseudo-icon($gli-search, 15);
+  }
+
+  input {
+    height: rem(59);
+
+    padding: rem(16) rem(20) rem(16) rem(40+15);
+
+    font-weight: 500;
+    font-size: rem(18);
+
+    border-radius: rem(4);
+    border: rem(1) solid $border-color;
+
+    &:focus {
+      border-color: $primary;
+    }
+
+    @include only-mouse {
+      &:hover {
+        border-color: $primary;
+        &~ * {
+          color: $primary;
+        }
+      }
+    }
+
+    @include placeholder{
+      font-weight: 300;
+      opacity: .8;
+    }
+  }
+}

@@ -21,11 +21,11 @@
     line-height: rem(34);
   }
 
-
   &__info {
     display: flex;
     flex-flow: column;
     justify-content: flex-end;
+    gap: rem(8);
 
     grid-area: 2 / 2;
   }

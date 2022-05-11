@@ -18,7 +18,7 @@ $wideScreens: (
 );
 
 $customContainer: true;
-$containerLimit: rem(screens(desktopMd)) + rem(32);
+$containerLimit: rem(1200) + rem(40);
 $containerOffset: calc(var(--container-gutter) * -1);
 $contentGutter: rem(16) !default;
 $contentGutterX2: rem(24) !default;
@@ -98,6 +98,7 @@ $icon-font-family: "glivera-icons" !default;
 $icon-font-prefix: 'gli-';
 $icon-font-path: $font-path + '/#{$icon-font-family}' !default;
 
+$gli-search: "\e90d";
 $gli-caret: "\e900";
 $gli-soc-gp: "\e901";
 $gli-wave: "\e902";
@@ -113,6 +114,7 @@ $gli-arrow-left: "\e908";
 $gli-comment: "\e90c";
 
 $icons-font-map: (
+  search:$gli-search,
   caret:$gli-caret,
   soc-gp:$gli-soc-gp,
   wave:$gli-wave,
