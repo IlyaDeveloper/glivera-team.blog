@@ -1,13 +1,32 @@
 .post-card {
-  display: flex;
+  display: grid;
+  grid-gap: rem(8) rem(40);
+  grid-auto-columns: max-content auto;
+
+  padding: 0 0 rem(30);
+  border-bottom: rem(1) solid $border-color;
 
   &__img {
+    grid-area: 2 span / 1;
 
+    min-width: rem(280);
+    min-height: rem(180);
   }
 
   &__caption {
+    grid-area: 1 / 2;
+
+    font-weight: 300;
+    font-size: rem(24);
+    line-height: rem(34);
   }
 
+
   &__info {
+    display: flex;
+    flex-flow: column;
+    justify-content: flex-end;
+
+    grid-area: 2 / 2;
   }
 }

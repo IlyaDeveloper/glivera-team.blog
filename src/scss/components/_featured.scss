@@ -49,30 +49,7 @@
     margin: auto 0 0;
   }
 
-  &__name {
-    font-weight: 400;
-    font-size: rem(14);
-    line-height: rem(22);
-  }
-
-  &__date {
-    display: inline-flex;
-    align-items: center;
-
-    color: $tertiary;
-
-    &:before{
-      margin: auto rem(8);
-
-      content:'|'
-    }
-  }
-
   &__links {
     margin: rem(12) 0 rem(14);
-  }
-
-  &__name {
-
   }
 }

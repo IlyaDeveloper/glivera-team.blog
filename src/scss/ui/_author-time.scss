@@ -1,0 +1,15 @@
+.author-time {
+  display: inline-flex;
+  align-items: center;
+
+  font-weight: 400;
+  font-size: rem(14);
+  line-height: rem(22);
+
+  &:after {
+    margin: auto rem(8);
+
+    content: '| ' attr(data-time);
+    color: $tertiary;
+  }
+}

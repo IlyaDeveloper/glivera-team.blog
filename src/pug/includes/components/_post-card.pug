@@ -1,0 +1,11 @@
+mixin postCard(img, caption, author, data, category, comments)
+  .post-card
+    picture.post-card__img
+      img(src='../../assets/images/' + img)
+    h2.post-card__caption=caption
+    mark.post-card__info
+      +authorTime(author, data)
+      div
+        each item in category
+          +categoryLink(item)
+      +commentCounter(comments)
