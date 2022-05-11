@@ -8,13 +8,10 @@
   &__list {
     display: grid;
     grid-gap: rem(30);
-
   }
-
-}
-
-
-.post-card{
-
-  display: flex;
+  &__foot {
+    display: flex;
+    justify-content: center;
+    margin: rem(40) 0 0;
+  }
 }
