@@ -19,6 +19,7 @@
 
   transition: .5s linear;
   transition-property: background-color, border-color, color, transform;
+  cursor: pointer;
 
   &:not(.--line) {
     position: relative;
@@ -35,6 +36,10 @@
     box-shadow: inset rem(0) rem(0) 0 rem(1) $primary;
   }
 
+  &.--mw-205{
+    min-width: rem(205);
+  }
+
   @include only-mouse {
     &:hover {
       --button-offset-right: #{rem(-9)};
@@ -48,8 +53,8 @@
 
     &.--line {
       &:hover {
-        --button-background: var(--button-hover-background, #{transparent});
-        --button-color: var(--button-hover-color, #{$primary});
+        //--button-background: var(--button-hover-background, #{transparent});
+        --button-color: var(--button-hover-color, #{$light});
       }
     }
   }

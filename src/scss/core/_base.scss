@@ -12,7 +12,7 @@
 
 html {
   font-family: $font-family-primary;
-  font-size: $base-font-size-color;
+  font-size: $base-font-size;
   font-weight: normal;
   text-align: left;
   line-height: 140%;
@@ -121,6 +121,7 @@ a {
 
   transition: $transition-default;
   transition-property: color;
+  cursor: pointer;
 
   @include only-mouse {
     &:hover {
@@ -144,7 +145,8 @@ p {
   margin: var(--p-margin, 0);
 
   font-weight: normal;
-  font-size: rem(20);
+  font-size: var(--p-font-size, rem(16));
+
   line-height: 140%;
 }
 

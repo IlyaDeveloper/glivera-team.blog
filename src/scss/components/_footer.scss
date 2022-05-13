@@ -1,121 +1,107 @@
 .footer {
-  --container-align-items: center;
-  --link-hover-color: #{$primary};
+  padding: rem(84) 0 rem(90);
 
-  position: relative;
-  z-index: $z-index-step;
-  display: flex;
-  justify-content: center;
+  background: $light;
 
-  padding: rem(28) 0;
-
-  //background: rgb(255,255,255);
-  background: linear-gradient(0deg, rgba(255,255,255,1) 30%, rgba(255,255,255,0) 97%);
-
-  overflow: hidden;
-
-  &__nav {
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: space-between;
-    gap: $contentGutterX2;
-
-    margin: rem(68) auto rem(48);
-
-    width: 100%;
-    max-width: rem(772);
-
-    ul {
-      display: grid;
-
-      grid-gap: rem(8);
-    }
+  &__top {
   }
 
-  &__link {
-    font-size: rem(14);
-    line-height: rem(17);
+  &__main {
+    display: grid;
+    grid-template: repeat(auto-fit, rem(40)) / 1fr 1fr 1fr 4.1fr;
+    //grid-auto-rows: rem(40);
+    grid-gap: 0 rem(46);
+
+    margin: rem(60) 0 0;
+  }
+
+  &__item {
+    --p-font-size: #{rem(14)};
 
     display: flex;
-    align-items: center;
-    letter-spacing: 0.05%;
+    flex-flow: column;
+    place-self: flex-start flex-start;
+    max-width: rem(580);
+
+    gap: rem(10);
+
+    font-weight: 400;
+    font-size: rem(14);
+    line-height: 157%;
+    color: $tertiary;
+
+    &:nth-child(1) {
+      grid-area: 8 span / 1;
+    }
+
+    &:nth-child(2) {
+      grid-area: 5 span / 2 / 1 / 2;
+    }
+
+    &:nth-child(3) {
+      grid-area: 5 span / 2 / 5 / 2;
+    }
+
+    &:nth-child(4) {
+      grid-area: 8 span / 3;
+    }
+
+    &:nth-child(5) {
+      grid-area: 7 span / 4;
+    }
+
+    &:nth-child(6) {
+      grid-area: 2 span / 4
+    }
 
     &.--soc {
-     & > svg path {
-        fill: var(--footer-soc-color, $dark)
-      }
-    }
+      flex-flow: row wrap;
+      column-gap: rem(30);
 
-    @include only-mouse {
-      &:hover {
-        --footer-soc-color: #{$primary};
-      }
-    }
-  }
+      max-width: rem(330);
 
-  &__soc {
-    position: relative;
+      @include insert-icons {
+        font-size: rem(28);
+        color: $dark;
 
-    display: grid;
-    grid-auto-flow: column dense;
-    grid-gap: rem(24);
+        transition: .6s ease-out;
+        transition-property: transform, color;
+        transform-origin: center center;
 
-    padding: rem(24) rem(58);
+        @include only-mouse {
+          &:hover {
+            color: $primary;
 
-    background: $light;
-
-    &:before {
-      position: absolute;
-      top: 50%;
-      left: -50vw;
-      right: -50vw;
-      z-index: -1;
-
-      content: '';
-
-      border-bottom: rem(1) solid $tertiary;
-    }
-  }
-
-  &__down {
-    display: inline-grid;
-    grid-auto-flow: column;
-    grid-auto-columns: max-content;
-    grid-gap: rem(40);
-
-    font-size: rem(12);
-    line-height: rem(15);
-
-    text-align: center;
-
-    white-space: nowrap;
-    opacity: 0.8;
-
-    a {
-      font-size: inherit;
-      line-height: inherit;
-    }
-  }
-
-  .caption {
-    max-width: 80vw;
-
-    text-align: center;
-  }
-
-  @include max-wide(phones) {
-    &__nav {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      grid-gap: $contentGutterX2;
-      justify-content: space-around;
-
-      & > ul {
-        &:nth-of-type(2n+1) {
-          justify-items: flex-end;
-          text-align: right;
+            transform: scale(2) rotate(-360deg);
+          }
         }
       }
     }
+
+    &.--offset-top {
+      margin-top: rem(30);
+    }
+
+    span {
+      font-size: rem(12);
+      line-height: 133%;
+    }
+  }
+
+  &__capt {
+    flex: 1 1 100%;
+
+    margin: 0 0 rem(10);
+
+    font-weight: 500;
+    font-size: rem(14);
+    line-height: 129%;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: $dark;
+  }
+
+  &__link {
+    white-space: nowrap;
   }
 }

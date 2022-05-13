@@ -78,7 +78,7 @@ $global-animation-state: var(--gm-play-animation, paused);
 $transition-function: cubic-bezier(.2, .63, .59, .84); //cubic-bezier(0,.89,.36,1.22);
 
 $base-font-color: $secondary !default;
-$base-font-size-color: 16px !default;
+$base-font-size: 16px !default;
 
 //$font-family-primary: 'Montserrat', sans-serif;
 $font-family-primary: 'Roboto', sans-serif;

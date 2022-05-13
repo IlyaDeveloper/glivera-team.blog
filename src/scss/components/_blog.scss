@@ -3,6 +3,8 @@
   grid-template-columns: repeat(12, 1fr);
   grid-gap: rem(40) rem(48);
 
+  padding: 0 0 rem(73);
+
   &__top {
     grid-area: 1/12 span;
   }
