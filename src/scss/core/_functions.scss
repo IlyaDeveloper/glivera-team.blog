@@ -59,14 +59,13 @@ $baseFontSize: 16;
 
 // Retrieve color Sass maps
 @function clr($key: 'primary') {
-  @return map-get($colors, $key);
+  @return map-get($themes-map, $key);
 }
 
 // Retrieve screens Sass maps
 @function screens($key: '') {
   @return map-get($wideScreens, $key);
 }
-
 
 @function get-value($n) {
   @return $n / ($n * 0 + 1);
@@ -75,6 +74,15 @@ $baseFontSize: 16;
 // pretty simple eh?
 @function get-line-height($font-size, $line-height) {
   @return get-value($line-height / $font-size);
+}
+
+@function font-local($local, $file) {
+  @return local('#{$local}'), local('#{$file}')
+}
+
+@function shadowBold($thick, $color) {
+  $min-think: -$thick;
+  @return $min-think 0 $color, 0 $thick $color, $thick 0 $color, 0 $min-think $color;
 }
 
 /*

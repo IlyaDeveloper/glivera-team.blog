@@ -53,6 +53,16 @@
   }
 }
 
+@mixin min-max-wide($size, $size2) {
+  @if (map-has-key($wideScreens, $size) & map-has-key($wideScreens, $size2)) {
+    @media (min-width: map-get($wideScreens, $size)) and (max-width: map-get($wideScreens, $size2)) {
+      @content;
+    }
+  } @else {
+    @warn "$size doesn't exist in $wideScreens.";
+  }
+}
+
 //z-index
 @mixin z-index($key) {
   z-index: z-index($key);
@@ -92,11 +102,6 @@
 @mixin artificial-thickness($thick, $color) {
   $min-think: -$thick;
   text-shadow: $min-think 0 $color, 0 $thick $color, $thick 0 $color, 0 $min-think $color;
-}
-
-@function ttomshadowBold($thick, $color) {
-  $min-think: -$thick;
-  @return $min-think 0 $color, 0 $thick $color, $thick 0 $color, 0 $min-think $color;
 }
 
 // Insert icon in pseudo element from icon-fonts
@@ -379,7 +384,6 @@
 //  }
 //}
 
-
 @mixin insert-icons {
   [class*='#{$icon-font-prefix}'] {
     @content;
@@ -491,5 +495,45 @@ $enable-important-utilities: true;
         }
       }
     }
+  }
+}
+
+@mixin font-face(
+  $font-name,
+  $local-name,
+  $font-path,
+  $font-file,
+  $font-weight: 400,
+  $font-style: normal,
+  $support-required: 'modern'
+) {
+
+  @font-face {
+    font-family: $font-name;
+    font-style: $font-style;
+    font-weight: $font-weight;
+    font-display: swap;
+
+    @if $support-required=='oldie' {
+      src: url('#{$font-path}.eot');
+      src: url('#{$font-path}.eot?#iefix') format('embedded-opentype'),
+      url('#{$font-path}.woff2') format('woff2'),
+      url('#{$font-path}.woff') format('woff'),
+      url('#{$font-path}.ttf') format('truetype');
+    }
+    @if $support-required=='recent' {
+      src: url('#{$font-path}.woff2') format('woff2'),
+      url('#{$font-path}.woff') format('woff'),
+      url('#{$font-path}.ttf') format('truetype');
+    }
+    @if $support-required=='modern' {
+      src: font-local($local-name, $font-file),
+      url('#{$font-path + $font-file}.woff2') format('woff2'),
+      url('#{$font-path + $font-file}.woff') format('woff');
+    }
+  }
+
+  @if $support-required !='oldie' and $support-required !='recent' and $support-required !='modern' {
+    @error 'Invalid support-required value. Must be "oldie"==>IE8 and above/ Android native browser 4+/ Safari 4.3 OR "recent"==>IE9+/ Android native browser 4.0+/ Safari 4.3+ OR "modern"==>IE9+/ Android native browser 4.4+/ Safari 5.1+';
   }
 }
