@@ -52,6 +52,14 @@
     margin: rem(12) 0 rem(14);
   }
 
+  @include max-wide(phonesLg) {
+    &__content {
+      gap: rem(16);
+
+      padding: rem(38) rem(38) rem(24);
+    }
+  }
+
   @include min-wide(tablet) {
     grid-template-columns: 1fr 1fr;
   }

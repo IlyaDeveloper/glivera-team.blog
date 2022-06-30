@@ -1,11 +1,30 @@
 .blog {
+  --in-transform-transform-start: translate(0, 5vh);
+
   display: grid;
   grid-gap: rem(48);
 
-  padding: 0 0 rem(73);
+  padding: 0 0 rem(48);
 
-  &__tags, &__aside {
-    display: none;
+  opacity: 0;
+  animation: in-transform $transition-start-delay $transition-start-duration cubic-bezier(.17, .67, .83, .67) 1 forwards;
+
+  @include max-wide(tablet) {
+    &__tags, &__aside {
+      display: none;
+    }
+
+    &__top {
+      order: 1;
+    }
+
+    &__search {
+      order: 2;
+    }
+
+    &__posts {
+      order: 3;
+    }
   }
 
   @include min-wide(tablet) {
@@ -17,17 +36,21 @@
     }
 
     &__tags {
-      display: unset;
+      //display: unset;
       grid-area: 2 / 12 span;
     }
 
     &__posts {
-      grid-area: 3 / 9 span;
+      grid-area: 2 span / 9 span/ 5;
+    }
+
+    &__search {
+      grid-area: 3 / 3 span;
     }
 
     &__aside {
-      display: unset;
-      grid-area: 3 / 3 span;
+      //display: unset;
+      grid-area: 4 / 3 span;
     }
   }
 }

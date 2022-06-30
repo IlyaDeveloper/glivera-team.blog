@@ -19,9 +19,8 @@ export class StorageWindow {
   }
 
   getStorageItem(name) {
-    let ss =  window.localStorage.getItem(name);
-    console.log(ss);
-    return  ss
+    // let ss =  window.localStorage.getItem(name);
+    return this.lStore.getItem(name);
   }
 
   setStorageItem(name, param) {

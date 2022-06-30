@@ -4,10 +4,10 @@
 
   --button-hover-background: #{$light};
   --button-hover-color: #{$primary};
-  --glob-animation-prop: none;
+  --in-transform-transform-start: translate(0, -5vh);
 
   position: fixed;
-  inset: var(--header-top) 0 auto;
+  inset: var(--header-top,0) 0 auto;
   z-index: z-index(header);
 
   display: flex;
@@ -24,7 +24,9 @@
   transition: $transition-default;
   transition-property: background-color, color, padding, height;
 
-  animation: show-block $transition-start-delay $transition-start-duration cubic-bezier(.17, .67, .83, .67) 1 forwards;
+  opacity: 0;
+
+  animation: in-transform $transition-start-delay $transition-start-duration cubic-bezier(.17, .67, .83, .67) 1 forwards;
 
   &__btn-menu {
     position: relative;
@@ -133,13 +135,14 @@
     position: absolute;
     top: 100%;
     left: 50%;
-    z-index: -1;
+    //z-index: -1;
 
     display: inline-grid;
     grid-gap: rem(6);
     align-items: center;
 
     padding: rem(16);
+    margin-top: rem(-2);
 
     border-radius: $radius;
     background: var(--header-background, $light);
@@ -225,7 +228,6 @@
   @include max-wide(laptop) {
     --header-link-margin: 4%;
     --header-link-last-margin: #{rem(38)};
-    //--container-justify-content: space-between;
 
     &__menu {
       flex-direction: column;

@@ -17,28 +17,18 @@
 //  }
 //}
 
-@include keyframes(show-block) {
+@include keyframes(in-transform) {
   0% {
-    opacity: 0;
-    transform: var(--show-block-trn-from, translate(0, -100%));
-  }
-
-
-  100% {
-    opacity: 1;
-    transform: var(--show-block-trn-to, unset);
-  }
-}
-
-@include keyframes(flip) {
-  0% {
-    transform: rotateY(0);
+    opacity: var(--in-transform-opacity-start, 0);
+    transform: var(--in-transform-transform-start, translate(-100vw, 0));
   }
 
   100% {
-    transform: rotateY(180deg);
+    opacity: var(--in-transform-opacity-end, 1);
+    transform: var(--in-transform-transform-end, translate(0, 0));
   }
 }
+
 //
 //@include keyframes(pulse-actual) {
 //  100% {
@@ -88,15 +78,5 @@
   }
   100% {
     transform: rotate(360deg);
-  }
-}
-
-@include keyframes(scale-in) {
-  from {
-    transform: scale(var(--slide-is-scale-from, 0));
-  }
-
-  to {
-    transform: scale(var(--slide-is-scale-to, 1));
   }
 }

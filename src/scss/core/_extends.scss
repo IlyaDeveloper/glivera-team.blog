@@ -6,9 +6,9 @@
 }
 
 %glob-animation-to-up {
-  --show-block-trn-from: translate(0, 10vh);
-  --show-block-trn-to: translate(0, 0);
+  --in-transform-transform-start: translate(0, 10vh);
+  --in-transform-transform-end: translate(0, 0);
 
-  animation: var(--glob-animation-prop, show-block) $transition-start-delay $transition-start-duration $transition-function 1 forwards;
+  animation: var(--glob-animation-prop, in-transform) $transition-start-delay $transition-start-duration $transition-function 1 forwards;
   //animation-play-state: $global-animation-state;
 }

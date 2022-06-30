@@ -16,9 +16,6 @@
   }
 
   @include max-wide(phones) {
-    svg {
-      transform: scale(0.77);
-      transform-origin: left center;
-    }
+    width: rem(150);
   }
 }
