@@ -1,20 +1,17 @@
 .logo {
   display: inline-flex;
-  color: var(--logo-color, $light);
+  color: var(--logo-color, $dark);
+  z-index: 1;
 
   min-height: rem(22);
   width: rem(136);
   pointer-events: none;
 
-  //path {
-  //  fill: currentColor;
-  //}
+  path {
+    fill: currentColor;
 
-  @include only-mouse {
-    &:hover {
-      color: var(--logo-color, $light);
-
-      opacity: 0.8;
+    &:last-of-type {
+      fill: $primary;
     }
   }
 

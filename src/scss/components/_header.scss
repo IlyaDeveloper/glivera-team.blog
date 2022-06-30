@@ -19,8 +19,6 @@
 
   padding: rem(20) 0;
 
-  //color: var(--header-color, $dark);
-
   background: var(--header-background, $light);
 
   transition: $transition-default;
@@ -28,87 +26,7 @@
 
   animation: show-block $transition-start-delay $transition-start-duration cubic-bezier(.17, .67, .83, .67) 1 forwards;
 
-  //&.--on-scroll, &.--while {
-  //  --logo-color: #{$primary};
-  //  --header-height: auto;
-  //
-  //  padding: rem(8) 0;
-  //
-  //  background: var(--header-background, $light);
-  //  color: var(--header-color, $dark);
-  //
-  //  box-shadow: rem(-12) rem(14) rem(44) rgba(230, 234, 238, 0.54);
-  //}
-
-  &__nav {
-    display: inline-flex;
-    flex-flow: row nowrap;
-    align-items: center;
-    gap: rem(30);
-
-    margin: auto;
-  }
-
-  &__link {
-    position: relative;
-
-    display: inline-flex;
-    align-items: center;
-    //gap: rem(6);
-
-    font-size: rem(14);
-    font-weight: 500;
-    letter-spacing: rem(0.8);
-    line-height: 2.5;
-    white-space: nowrap;
-    text-transform: uppercase;
-
-    &:before {
-      position: absolute;
-      bottom: 0%;
-      left: 0;
-      right: var(--header-link-right, 100%);
-      z-index: -1;
-
-      height: rem(3);
-
-      content: '';
-
-      background: $primary-dark;
-
-      transition: right .5s linear;
-    }
-
-    &.--caret {
-
-      &:after {
-        @include pseudo-icon($gli-caret, 10);
-
-        transform: translate(50%, 0);
-      }
-
-    }
-
-    &.--is-active {
-      --header-link-right: 0;
-    }
-
-    @include only-mouse {
-      &:hover {
-        --header-link-right: 0;
-
-        color: $primary;
-      }
-    }
-  }
-
-  &__btns {
-    display: flex;
-    gap: rem(10);
-
-  }
-
-  &__menu {
+  &__btn-menu {
     position: relative;
     z-index: $z-index-step + 1;
 
@@ -116,7 +34,7 @@
     height: rem(36);
 
     padding: 0;
-    margin: 0 0 0 rem(24);
+    margin: 0 rem(24) 0 0;
 
     outline: none;
     color: currentColor;
@@ -194,164 +112,151 @@
     }
   }
 
-  @include max-wide(laptop) {
-    --header-link-margin: 4%;
-    --header-link-last-margin: #{rem(38)};
-  }
-
-  @include max-wide(tablet) {
-    &__nav {
-      max-width: 0;
-      margin: auto rem(24) auto auto;
-
-      visibility: hidden;
-    }
-  }
-
-  @include min-wide(tablet) {
-    &__menu {
-      display: none !important;
-    }
-  }
-
-  @include max-wide(phones) {
-    .button.--line {
-      padding-left: rem(20);
-      padding-right: rem(20);
-    }
-  }
-
-  @include max-wide(phonesSm) {
-    &__nav {
-      margin: 0 auto 0 rem(-6);
-    }
-  }
-}
-
-.mobile-menu {
-  position: fixed;
-
-  z-index: $z-index-step;
-  left: auto !important;
-
-  display: flex;
-  justify-content: flex-end;
-
-  height: 100vh;
-  width: 100%;
-
-  overflow: hidden;
-  transition: .6s linear;
-  transition-property: opacity, transform, top, right, visibility;
-
-  &, &__btn {
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-  }
-
-  &:not(.--is-open) {
-    --mobile-menu-link-opacity: 0;
-
-    top: -100vh;
-    right: -100vw;
-
-    left: auto;
-
-    max-width: 0;
-    max-height: 0;
-
-    opacity: 0;
-
-    visibility: hidden;
-
-    transform: scale(0);
-    transform-origin: right top;
-
-    .mobile-menu__content {
-      width: 0;
-      padding: 0;
-      height: 0;
-    }
-  }
-
-  &__content {
-    z-index: 2;
-
-    display: grid;
-    grid-gap: rem(20);
-    grid-auto-rows: max-content;
-    justify-items: flex-end;
-
-    flex: 1 1;
-
-    width: 100%;
-    max-width: 100vh;
-    height: 100vh;
-
-    padding: $contentGutterX4 $contentGutterX3 $contentGutterX3;
-
-    color: $dark;
-    font-size: rem(28);
-    font-weight: 600;
-    text-align: right;
-
-    border-radius: 0 0 0 rem(320);
-    backdrop-filter: blur(20px);
-    background: #ffffffb0;
-
-    filter: drop-shadow(rem(-12) rem(14) rem(44) rgba(230, 234, 238, 0.54));
-
-    transition: width .3s ease-in-out;
-
-    overflow: hidden;
-  }
-
-  &__link {
-    --link-hover-color: #{$primary};
-
+  &__menu {
     position: relative;
 
     display: inline-flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    gap: rem(30);
 
+    margin: auto;
+
+    height: max-content;
+
+    background: var(--header-background, $light);
+  }
+
+  &__menu-sub {
+    --header-link-content: none;
+
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    z-index: -1;
+
+    display: inline-grid;
+    grid-gap: rem(6);
+    align-items: center;
+
+    padding: rem(16);
+
+    border-radius: $radius;
+    background: var(--header-background, $light);
+    box-shadow: $sh-card;
+
+    transform: translate(-50%, -1vh);
+    opacity: 0;
+    visibility: hidden;
+
+    transition: .4s linear;
+    transition-property: transform, opacity;
+  }
+
+  &__link {
+    position: relative;
+
+    display: inline-flex;
+    align-items: center;
+
+    font-size: rem(14);
+    font-weight: 500;
+    letter-spacing: rem(0.8);
+    line-height: 2.5;
     white-space: nowrap;
+    text-transform: uppercase;
 
-    opacity: var(--mobile-menu-link-opacity, 1);
-
-    transition: opacity 0.3s .8s ease-in;
+    cursor: pointer;
 
     &:before {
       position: absolute;
-      top: 115%;
-      right: 0;
-      left: var(--mobile-menu-link, calc(100% - #{rem(3)}));
+      top: 100%;
+      left: 0;
+      right: var(--header-link-right, 100%);
+      z-index: -1;
 
-      min-width: rem(3);
-      min-height: rem(3);
+      height: rem(3);
 
-      content: '';
+      content: var(--header-link-content, '');
 
-      border-radius: rem(3);
-      background: $primary;
+      background: $primary-dark;
 
-      transition: left, .6s cubic-bezier(1, 0.1, 0.1, .1);
+      transition: right .5s linear;
+    }
+
+    &.--caret {
+      &:hover, &:active {
+        .header__menu-sub {
+          --link-color: #{$dark};
+          --link-hover-color: #{$secondary};
+
+          transform: translate(-50%, 0);
+          opacity: 1;
+
+          visibility: visible;
+        }
+      }
+
+      &:after {
+        @include pseudo-icon($gli-caret, 10);
+
+        transform: translate(50%, 0);
+      }
+    }
+
+    &.--is-active {
+      --header-link-right: 0;
     }
 
     @include only-mouse {
       &:hover {
-        --mobile-menu-link: 0;
+        --header-link-right: 0;
+
+        color: $primary;
       }
     }
   }
 
-  &__btn {
-    position: absolute;
-    z-index: 0;
+  &__btns {
+    display: flex;
+    gap: rem(10);
+  }
 
-    width: 100%;
+  @include max-wide(laptop) {
+    --header-link-margin: 4%;
+    --header-link-last-margin: #{rem(38)};
+    //--container-justify-content: space-between;
 
-    backdrop-filter: blur(10px);
-    opacity: 1;
+    &__menu {
+      flex-direction: column;
+
+      &:not(.--is-active) {
+        display: none;
+      }
+
+      &.--is-active {
+        position: absolute;
+        inset: var(--header-height) 0 auto;
+        z-index: z-index(header);
+
+        padding: rem(24);
+      }
+    }
+
+    &__btns {
+      margin-left: auto;
+    }
+  }
+
+  @include max-wide(phonesLg) {
+    .button.--line {
+      display: none;
+    }
+  }
+
+  @include min-wide(laptop) {
+    &__btn-menu {
+      display: none;
+    }
   }
 }

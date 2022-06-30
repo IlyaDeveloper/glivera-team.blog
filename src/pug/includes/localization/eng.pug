@@ -1,64 +1,77 @@
 // global
 -
-  var lang = 'en'
+  var
+          lang = 'en',
+          META_TITLE = '',
+          META_DESCRIPTION = '',
+          META_KEYWORDS = '',
+          META_CREATOR = '',
 
-  var META_TITLE = ''
-  var META_DESCRIPTION = ''
-  var META_KEYWORDS = ''
-  var META_CREATOR = ''
-
-
-// header
--
-  var HEADER_MENU = [
-    {
-      link: '#find',
-      name: 'Find a surrogate',
-      target: false,
-    },
-  ]
-  var HEADER_MOM_MENU = [
-    {
-      link: '#find',
-      name: 'Find a surrogate',
-    },
-  ]
-  var HEADER_BTN = 'Contact Us'
-
-// footer
--
-  var FOOTER_CAPTION = 'Become happy parents with us'
-
-  var FOOTER_COPY = 'Copyright © 2022 New Hope Surrogacy'
-  var FOOTER_POLICY = 'Privacy Policy'
-  var FOOTER_NAV = [
-    {
-      link: 'about-us',
-      name: 'About Us'
-    },
-    {
-      link: 'contact',
-      name: 'Contacts'
-    },
-    {
-      link: 'testimonials',
-      name: 'Testimonials'
-    },
-    {
-      link: 'blog',
-      name: 'Blog'
-    }
-  ]
-
-// consent
--
-  var CONSENT_CAPT = 'We use cookies'
-  var CONSENT_TEXT = 'They allow us to improve your browsing experience and analyze website traffic. To '
-  var CONSENT_LINK = 'Privacy Policy'
-  var CONSENT_BTN = 'Accept'
-
-// not-found
--
-  var NOT_FOUND_CAPT = 'Page not found'
-  var NOT_FOUND_TEXT = 'The page you are looking for doesn’t exist or an other error occurred.'
-  var NOT_FOUND_BTN = 'Take me to Homepage'
+          // header
+          HEADER_MENU = [
+            {
+              link: '/why_us',
+              name: 'Why Us',
+              subMenu: [
+                {
+                  link: '/sub-menu-item',
+                  name: 'item 1',
+                },
+                {
+                  link: '/sub-menu-item',
+                  name: 'item 2',
+                },
+                {
+                  link: '/sub-menu-item',
+                  name: 'item 3',
+                }
+              ],
+              target: false,
+            },
+            {
+              link: '/vpn_apps',
+              name: 'VPN APPS',
+              subMenu: null,
+              target: false,
+            },
+            {
+              link: '/support',
+              name: 'Support',
+              name: 'Why Us',
+              subMenu: [
+                {
+                  link: '/sub-menu-item',
+                  name: 'item 1',
+                },
+                {
+                  link: '/sub-menu-item',
+                  name: 'item 2',
+                },
+                {
+                  link: '/sub-menu-item',
+                  name: 'item 3',
+                }
+              ],
+              target: false,
+            },
+            {
+              link: '/resources',
+              name: 'Resources',
+              name: 'Why Us',
+              subMenu: [
+                {
+                  link: '/sub-menu-item',
+                  name: 'item 1',
+                },
+                {
+                  link: '/sub-menu-item',
+                  name: 'item 3',
+                },
+                {
+                  link: '/sub-menu-item',
+                  name: 'item 3',
+                }
+              ],
+              target: false,
+            },
+          ]

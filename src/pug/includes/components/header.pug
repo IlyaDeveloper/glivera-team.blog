@@ -1,25 +1,23 @@
 header.header(class=headerClass)
   article.container
-    button.header__menu(type='button')
+    button.header__btn-menu(type='button')
       svg(viewbox='0 0 64 48')
         path(d='M19,15 L45,15 C70,15 58,-2 49.0177126,7 L19,37')
         path(d='M19,24 L45,24 C61.2371586,24 57,49 41,33 L32,24')
         path(d='M45,33 L19,33 C-8,33 6,-2 22,14 L45,37')
 
-    article.mobile-menu
-      nav.mobile-menu__content
-        each item in HEADER_MOM_MENU
-          a.mobile-menu__link(href=item.link)=item.name
-
-      button.mobile-menu__btn(type='button')
-
     include ../ui/_logo
 
-    nav.header__nav
-      a.header__link.--caret(href='') WHY US
-      a.header__link(href='') VPN APPS
-      a.header__link.--caret(href='') SUPPORT
-      a.header__link.--caret(href='') Resources
+    nav.header__menu
+      each item in HEADER_MENU
+        if (item.subMenu != null)
+          div.header__link(class='--caret')
+            span=item.name
+            mark.header__menu-sub
+              each itemSub in item.subMenu
+                a(class='header__link --sub-menu', href=itemSub.link)=itemSub.name
+        else if (item.subMenu == null)
+          a.header__link(href=item.link)=item.name
 
     .header__btns
       +button('LOG IN', '--line',)
