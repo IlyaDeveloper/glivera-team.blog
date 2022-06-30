@@ -1,10 +1,6 @@
 .posts {
   --caption-margin: #{ 0 0 rem(40)};
 
-  padding: 0 rem(60) 0 0;
-
-  border-right: rem(1) solid $border-color;
-
   &__list {
     display: grid;
     grid-gap: rem(30);
@@ -15,5 +11,11 @@
     justify-content: center;
 
     margin: rem(40) 0 0;
+  }
+
+  @include min-wide(tablet) {
+    padding: 0 rem(60) 0 0;
+
+    border-right: rem(1) solid $border-color;
   }
 }

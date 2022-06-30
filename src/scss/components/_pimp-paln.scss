@@ -143,6 +143,7 @@
   &__logos {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: rem(28);
 
     margin-left: rem(30);
@@ -167,6 +168,7 @@
   &__link {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
 
     color: $primary;
 
@@ -181,4 +183,19 @@
     }
   }
 
+  @include max-wide(tablet) {
+    &__payments, &__items {
+      flex-flow: column;
+    }
+
+    &__links {
+      grid-auto-flow: row;
+      gap:rem(24);
+    }
+
+    &__logos {
+      flex-flow: row wrap;
+      margin: rem(24) 0;
+    }
+  }
 }

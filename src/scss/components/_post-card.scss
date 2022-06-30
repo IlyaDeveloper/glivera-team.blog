@@ -29,4 +29,16 @@
 
     grid-area: 2 / 2;
   }
+
+  @include max-wide(tablet) {
+    grid-auto-columns: auto;
+
+    &__img, &__caption, &__info {
+      grid-area: auto;
+    }
+
+    &__img img {
+      width: 100%;
+    }
+  }
 }

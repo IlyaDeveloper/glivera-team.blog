@@ -16,7 +16,7 @@
   line-height: rem(16);
   color: $tertiary;
 
-  min-height: var(--alert-height,rem(40));
+  min-height: var(--alert-height, rem(40));
 
   background: $dark;
   opacity: 0;
@@ -33,20 +33,16 @@
     grid-auto-flow: column;
     grid-gap: rem(32);
     align-items: center;
-
   }
 
   &__warn {
     display: inline-flex;
     align-items: center;
     gap: rem(4);
+    //grid-area: var(--alert-grid-area-1, none);
 
     color: $secondary;
     font-weight: bold;
-  }
-
-  &__item {
-
   }
 
   &__close {
@@ -65,4 +61,36 @@
     }
   }
 
+  @include max-wide(phonesLg) {
+    justify-content: initial;
+    --alert-grid-area-1: 1/1;
+
+    &__wrap {
+      grid-gap: rem(20);
+
+      width: 100%;
+
+      margin-right: rem(24);
+    }
+
+    &__link {
+      grid-area: 1/2;
+      text-align: right;
+    }
+
+    &__item {
+
+
+      &:nth-child(2) {
+        grid-area: 2/1;
+        justify-self: flex-end;
+      }
+
+      &:nth-child(1) {
+        grid-area: 2/2;
+        justify-self: flex-start;
+
+      }
+    }
+  }
 }

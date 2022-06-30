@@ -1,23 +1,33 @@
-.blog{
+.blog {
   display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  grid-gap: rem(40) rem(48);
+  grid-gap: rem(48);
 
   padding: 0 0 rem(73);
 
-  &__top {
-    grid-area: 1/12 span;
+  &__tags, &__aside {
+    display: none;
   }
 
-  &__tags {
-    grid-area: 2 / 12 span;
-  }
+  @include min-wide(tablet) {
+    grid-template-columns: repeat(12, 1fr);
+    grid-gap: rem(40) rem(48);
 
-  &__posts{
-    grid-area: 3 / 9 span;
-  }
+    &__top {
+      grid-area: 1/12 span;
+    }
 
-  &__aside{
-    grid-area: 3 / 3 span;
+    &__tags {
+      display: unset;
+      grid-area: 2 / 12 span;
+    }
+
+    &__posts {
+      grid-area: 3 / 9 span;
+    }
+
+    &__aside {
+      display: unset;
+      grid-area: 3 / 3 span;
+    }
   }
 }
