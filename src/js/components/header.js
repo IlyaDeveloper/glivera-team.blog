@@ -2,7 +2,6 @@ import {RefElements} from "../root/ref-elements";
 import {StorageWindow} from "../root/sorage-window";
 
 export class HeaderComponent {
-  host = document.querySelector('.header');
   menu = document.querySelector('.header__menu');
   menuBtn = document.querySelector('.header__btn-menu');
   menuLink = document.querySelectorAll('.header__link');
@@ -13,21 +12,6 @@ export class HeaderComponent {
     this.ref = new RefElements()
     this.store = new StorageWindow()
   }
-
-  headerSticky() {
-    // document.addEventListener('scroll', () => {
-    //   let
-    //     elmNext = document.querySelector('.in-ukraine'),
-    //     elmFirst = window.getComputedStyle(document.querySelector('.welcome')),
-    //     elmFirstSize = elmFirst.paddingBottom,
-    //     posScroll = window.scrollY,
-    //     posElm = elmNext.offsetTop;
-    //
-    //   (posScroll >= (posElm - parseInt(elmFirstSize)))
-    //     ? this.host.classList.add('--on-scroll')
-    //     : this.host.classList.remove('--on-scroll')
-    // })
-  };
 
   activeMenu() {
     this.menu.classList.add('--is-active');
@@ -46,8 +30,6 @@ export class HeaderComponent {
   }
 
   init() {
-    this.headerSticky();
-
     this.menuBtn.addEventListener('click', () => {
       (this.isActive = !this.isActive)
         ? this.activeMenu()

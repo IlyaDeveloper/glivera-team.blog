@@ -2,6 +2,7 @@ import {StorageWindow} from "./root/sorage-window"
 import {RefElements} from './root/ref-elements';
 import {HeaderComponent} from "./components/header";
 import {AlertComponent} from "./components/alert";
+import {AboutMeComponent} from "./components/about-me";
 
 const loading = () => {
   const ref = new RefElements();
@@ -32,10 +33,12 @@ const loading = () => {
 const app = () => {
   const header = new HeaderComponent();
   const alert = new AlertComponent();
+  const about = new AboutMeComponent();
 
   loading();
 
   alert.init();
+  about.init();
   header.init();
 }
 
