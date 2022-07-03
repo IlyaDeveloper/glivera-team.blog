@@ -124,7 +124,7 @@ export class AboutMeComponent {
           this.host.remove();
           this.ref.enableScroll()
         });
-      }, 2400
+      }, 3000
     )
   }
 }
