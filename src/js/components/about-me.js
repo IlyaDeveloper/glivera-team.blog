@@ -1,6 +1,6 @@
 import {RefElements} from "../root/ref-elements";
 import ABOUT_ME_IMAGE from "../../assets/images/about-img.jpg";
-import {p5} from "../../../node_modules/p5/lib/p5.js"
+import p5 from "../../../node_modules/p5/lib/p5.js"
 
 export class AboutMeComponent {
   host;
@@ -9,7 +9,6 @@ export class AboutMeComponent {
   constructor() {
     this.ref = new RefElements();
   }
-
 
   triangleAnimation(canvas) {
     const CONFIG_TRIANGLE = {
